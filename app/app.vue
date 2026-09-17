@@ -118,10 +118,11 @@
               >
               هستم
             </h1>
-            <p class="mt-6 text-lg text-slate-400 leading-relaxed">
-              توسعه‌دهنده وب با تمرکز بر پیاده‌سازی رابط‌های کاربری چشم‌نواز،
-              بهینه و با کارایی بالا با استفاده از Vue 3 و Nuxt.
+            <p class="mt-6 text-lg text-slate-400 leading-relaxed h-16">
+              {{ dynamicText
+              }}<span class="animate-pulse text-emerald-400">|</span>
             </p>
+
             <div class="mt-10 flex flex-wrap gap-4 justify-start">
               <a
                 href="#projects"
@@ -286,6 +287,44 @@ const progress = ref(0);
 const currentStatus = ref("Connecting to core modules...");
 const imageError = ref(false);
 
+// --- بخش جدید برای تایپ‌رایتر ---
+const dynamicText = ref("");
+const roles = [
+  "توسعه‌دهنده وب با تمرکز بر رابط‌های کاربری چشم‌نواز",
+  "برنامه‌نویس متخصص با استفاده از Vue 3 و Nuxt",
+  " علاقه‌مند به مشارکت تیمی و دنیای متن‌باز (GitHub)",
+  "عاشق کدهای بهینه و با کارایی بالا",
+];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const typeWriter = () => {
+  const currentRole = roles[roleIndex];
+
+  if (isDeleting) {
+    dynamicText.value = currentRole.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    dynamicText.value = currentRole.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typeSpeed = isDeleting ? 30 : 60;
+
+  if (!isDeleting && charIndex === currentRole.length) {
+    typeSpeed = 2000; // مکث در انتهای جمله برای خوانده شدن
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    typeSpeed = 500;
+  }
+
+  setTimeout(typeWriter, typeSpeed);
+};
+// -----------------------------
+
 const onImageError = () => {
   imageError.value = true;
 };
@@ -319,6 +358,7 @@ onMounted(() => {
       }, 800); // مکث کوتاه برای دیدن ۱۰۰٪
     }
   }, 100);
+  typeWriter();
 });
 
 const skills = ref([
