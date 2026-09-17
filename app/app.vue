@@ -95,6 +95,19 @@
 
       <!-- بخش معرفی (Hero Section) به همراه عکس شخصی -->
       <section id="about" class="relative py-20 md:py-32 overflow-hidden">
+        <!-- لایه ۱: گرید شطرنجی برنامه‌نویسی -->
+        <div
+          class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"
+        ></div>
+
+        <!-- لایه ۲: هاله های نوری متحرک نئونی (پررنگ‌تر شده) -->
+        <div
+          class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none"
+        ></div>
+
+        <!-- خط اسکن متحرک: یک نور از بالای صفحه به پایین حرکت می‌کند -->
+        <div class="scan-line pointer-events-none"></div>
+
         <div
           class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.08),transparent_50%)]"
         ></div>
@@ -149,7 +162,7 @@
 
               <!-- قاب تصویر -->
               <div
-                class="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden bg-slate-900 border border-slate-700 shadow-2xl flex items-center justify-center"
+                class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-3xl overflow-hidden bg-slate-900 border border-emerald-500/30 shadow-[0_0_60px_rgba(16,185,129,0.25)] flex items-center justify-center"
               >
                 <!-- در صورتی که تصویر شما در پوشه public/me.jpg قرار گیرد نمایش داده می‌شود -->
                 <img
@@ -189,8 +202,29 @@
       <!-- بخش مهارت‌ها (Skills) -->
       <section
         id="skills"
-        class="py-20 bg-slate-950/40 border-y border-slate-800"
+        class="relative py-24 bg-slate-950/70 border-y border-slate-800/80 overflow-hidden"
       >
+        <!-- خطوط برنامه‌نویسی پس‌زمینه -->
+        <div
+          class="absolute inset-0 bg-lines-pattern opacity-40 pointer-events-none"
+        ></div>
+
+        <!-- کاراکترهای شناور کم‌رنگ سینتکس برنامه‌نویسی در پس‌زمینه -->
+        <div
+          class="absolute -top-6 left-10 text-8xl font-mono text-slate-800/20 select-none pointer-events-none font-black"
+        >
+          &lt;/&gt;
+        </div>
+        <div
+          class="absolute bottom-4 right-10 text-9xl font-mono text-slate-800/20 select-none pointer-events-none font-black"
+        >
+          { }
+        </div>
+        <div
+          class="absolute top-1/2 left-1/3 text-7xl font-mono text-slate-800/10 select-none pointer-events-none"
+        >
+          =&gt;
+        </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-2xl mx-auto">
             <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -410,5 +444,87 @@ html {
 .fade-out-leave-to {
   opacity: 0;
   transform: scale(1.05);
+}
+/* گرید نقطه‌ای پررنگ‌تر + ماسک محو شونده برای زیبایی */
+.bg-grid-pattern {
+  background-image: radial-gradient(
+    rgba(52, 211, 153, 0.35) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 28px 28px;
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 40%,
+    black 30%,
+    transparent 75%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 40%,
+    black 30%,
+    transparent 75%
+  );
+}
+
+/* خطوط گرید پررنگ‌تر */
+.bg-lines-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* هاله نوری شناور - حرکت واضح‌تر و بزرگ‌تر */
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -60px) scale(1.25);
+  }
+  66% {
+    transform: translate(-40px, 40px) scale(0.9);
+  }
+}
+.animate-blob {
+  animation: blob-float 12s infinite ease-in-out;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* خط اسکن نورانی متحرک (حس ترمینال و مانیتور کدنویسی) */
+@keyframes scanline {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(52, 211, 153, 0.4),
+    transparent
+  );
+  animation: scanline 8s linear infinite;
 }
 </style>
