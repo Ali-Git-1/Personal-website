@@ -121,6 +121,11 @@
             >
               آماده برای پروژه‌های جدید
             </span>
+            <!-- اسم و فامیل با افکت گلیچ سایبری -->
+            <div class="glitch-wrapper mb-3" dir="ltr" data-text="Ali Arabpour">
+              <span class="glitch-text">Ali Arabpour</span>
+            </div>
+
             <h1
               class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mt-6 leading-tight"
             >
@@ -526,5 +531,88 @@ html {
     transparent
   );
   animation: scanline 8s linear infinite;
+}
+/* ===== افکت گلیچ برای اسم ===== */
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.glitch-wrapper::before,
+.glitch-wrapper::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+/* لایه قرمز/صورتی - جابجایی افقی */
+.glitch-wrapper::before {
+  color: #f43f5e;
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+/* لایه فیروزه‌ای - جابجایی مخالف */
+.glitch-wrapper::after {
+  color: #22d3ee;
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-text {
+  color: #34d399; /* سبز هماهنگ با تم سایت */
+  text-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+}
+
+@keyframes glitch-anim-1 {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  90% {
+    opacity: 0.8;
+    transform: translate(-3px, 1px);
+    clip-path: inset(20% 0 40% 0);
+  }
+  93% {
+    opacity: 0.8;
+    transform: translate(3px, -1px);
+    clip-path: inset(60% 0 10% 0);
+  }
+  96% {
+    opacity: 0.8;
+    transform: translate(-2px, 0);
+    clip-path: inset(0 0 70% 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0%,
+  85%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  87% {
+    opacity: 0.7;
+    transform: translate(3px, -1px);
+    clip-path: inset(40% 0 30% 0);
+  }
+  91% {
+    opacity: 0.7;
+    transform: translate(-3px, 1px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  95% {
+    opacity: 0.7;
+    transform: translate(2px, 0);
+    clip-path: inset(70% 0 5% 0);
+  }
 }
 </style>
