@@ -27,21 +27,31 @@
         >
           آماده برای پروژه‌های جدید
         </span>
-        <!-- اسم و فامیل با افکت گلیچ سایبری -->
-        <div class="glitch-wrapper mb-3" dir="ltr" data-text="Ali Arabpour">
-          <span class="glitch-text">Ali Arabpour</span>
-        </div>
-
+        <!-- عنوان اصلی و نام کامل (بهینه‌سازی کامل برای سئو) -->
         <h1
-          class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mt-6 leading-tight"
+          class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
         >
-          سلام، من
+          <!-- افکت گلیچ روی نام برای برندینگ شخصی -->
+          <span
+            class="glitch-wrapper block mb-3"
+            dir="ltr"
+            data-text="Ali Arabpour"
+          >
+            <span class="glitch-text text-emerald-400">Ali Arabpour</span>
+          </span>
+        </h1>
+        <h1
+          class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
+        >
+          <span>سلام، من </span>
           <span
             class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-            >برنامه‌نویس فرانت‌اند</span
           >
-          هستم
+            برنامه‌نویس فرانت‌اند
+          </span>
+          <span> هستم</span>
         </h1>
+
         <p class="mt-6 text-lg text-slate-400 leading-relaxed h-16">
           {{ dynamicText }}<span class="animate-pulse text-emerald-400">|</span>
         </p>
@@ -113,6 +123,14 @@
 import { ref, onMounted } from "vue";
 
 const imageError = ref(false);
+
+useSeoMeta({
+  title: "علی عرب پور | Ali Arabpour - برنامه‌نویس فرانت‌اند Vue و Nuxt",
+  description:
+    "پورتفولیو و نمونه کارهای علی عرب پور (Ali Arabpour)، توسعه‌دهنده فرانت‌اند و وب مسلط به Vue.js ،Nuxt و Tailwind CSS.",
+  ogTitle: "علی عرب پور | Ali Arabpour",
+  ogDescription: "توسعه‌دهنده فرانت‌اند مسلط به اکوسیستم Vue و جاوااسکریپت",
+});
 
 // --- بخش جدید برای تایپ‌رایتر ---
 const dynamicText = ref("");

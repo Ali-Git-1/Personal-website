@@ -96,7 +96,8 @@
                 />
               </svg>
             </a>
-
+          </div>
+          <div class="flex flex-wrap gap-3 mt-4">
             <!-- Eitaa (چت مستقیم با شماره) -->
             <a
               href="https://eitaa.com/09178975867"
