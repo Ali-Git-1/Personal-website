@@ -73,6 +73,39 @@ const skills = ref([
   { name: "Nuxt 3", icon: "⛰️" },
   { name: "Tailwind CSS", icon: "🌊" },
   { name: "Git & GitHub", icon: "🐙" },
+  {
+    name: "REST APIs & Axios",
+    icon: "⚡", // یا 🔄
+    color: "text-sky-400",
+  },
+  {
+    name: "UI/UX Design",
+    icon: "💫", // یا 📐
+    color: "text-pink-400",
+  },
+  {
+    name: "PHP",
+    icon: "🐘",
+    color: "text-indigo-400",
+  },
+  {
+    name: "WordPress",
+    icon: "🌐",
+    color: "text-blue-500",
+  },
+  // اضافه کردن به لیست مهارت‌ها:
+  {
+    name: "Android App Dev",
+    description: "ساخت انواع اپلیکیشن با Android Studio",
+    icon: "📱", // یا 🤖
+    color: "text-emerald-400",
+  },
+  {
+    name: "Android Game Dev",
+    description: "ساخت و توسعه بازی با Android Studio",
+    icon: "🎮",
+    color: "text-purple-400",
+  },
 ]);
 </script>
 
