@@ -75,6 +75,12 @@
               >مهارت‌ها</a
             >
             <a
+              href="#published-apps"
+              class="text-slate-300 hover:text-emerald-400 transition-colors"
+              >برنامه‌ها</a
+            >
+
+            <a
               href="#projects"
               class="text-slate-300 hover:text-emerald-400 transition-colors"
               >نمونه‌کارها</a
@@ -96,6 +102,8 @@
       <HeroSection />
 
       <SkillsSection />
+
+      <PublishedAppsSection />
 
       <!-- بخش پروژه‌ها (Projects) -->
       <section id="projects" class="py-20">
@@ -156,6 +164,7 @@ import { ref, onMounted } from "vue";
 import SkillsSection from "./components/SkillsSection.vue";
 import HeroSection from "./components/HeroSection.vue";
 import FooterSection from "./components/FooterSection.vue";
+import PublishedAppsSection from "./components/PublishedAppsSection.vue";
 
 // متغیرهای لودینگ
 const isLoading = ref(true);
