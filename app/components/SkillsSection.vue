@@ -106,6 +106,11 @@ const skills = ref([
     icon: "🎮",
     color: "text-purple-400",
   },
+  {
+    name: "SEO & Meta Tags",
+    icon: "🔍", // یا 📈
+    color: "text-amber-400",
+  },
 ]);
 </script>
 
