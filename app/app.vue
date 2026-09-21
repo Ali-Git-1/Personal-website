@@ -84,6 +84,11 @@
               class="text-slate-300 hover:text-purple-400 transition-colors"
               >بازی‌ها</a
             >
+            <a
+              href="#wordpress-projects"
+              class="text-slate-300 hover:text-sky-400 transition-colors"
+              >وردپرس</a
+            >
 
             <a
               href="#projects"
@@ -111,6 +116,8 @@
       <PublishedAppsSection />
 
       <PublishedGamesSection />
+
+      <WordPressProjectsSection />
 
       <!-- بخش پروژه‌ها (Projects) -->
       <section id="projects" class="py-20">
@@ -173,6 +180,7 @@ import HeroSection from "./components/HeroSection.vue";
 import FooterSection from "./components/FooterSection.vue";
 import PublishedAppsSection from "./components/PublishedAppsSection.vue";
 import PublishedGamesSection from "./components/PublishedGamesSection.vue";
+import WordPressProjectsSection from "./components/WordPressProjectsSection.vue";
 
 // متغیرهای لودینگ
 const isLoading = ref(true);
