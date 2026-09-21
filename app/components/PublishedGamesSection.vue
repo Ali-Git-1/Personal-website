@@ -95,6 +95,14 @@
             <span v-else class="text-xs text-amber-400/80 font-medium">
               در حال توسعه ⏳
             </span>
+            <a
+              v-if="game.repoUrl"
+              :href="game.repoUrl"
+              target="_blank"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors"
+            >
+              <span>📎 GitHub</span>
+            </a>
           </div>
         </div>
       </div>
@@ -113,6 +121,7 @@ const games = ref([
     icon: "/icon.png",
     description:
       "یک بازی جذاب و باحال با عکس ها و استایل ها و مراحل متنوع طراحی شده برای سیستم‌عامل اندروید.",
+    repoUrl: "https://github.com/Ali-Git-1/Puzzle-game.git",
     techs: [
       "HTML",
       "CSS",
