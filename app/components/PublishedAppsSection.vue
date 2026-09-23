@@ -3,29 +3,25 @@
 const apps = [
   {
     id: 1,
-    title: "اپلیکیشن دستیار هوشمند",
+    title: "ماشین حساب مدرن",
     category: "کاربردی / ابزارها",
-    status: "به‌زودی در مارکت‌ها",
+    status: "در حال بررسی در مایکت",
     description:
-      "یک اپلیکیشن اندرویدی پیشرفته برای مدیریت کارهای روزمره با رابط کاربری مدرن، ذخیره‌سازی ابری و بهینه‌سازی شده برای مصرف حداقل باتری.",
-    tags: ["Android Studio", "Kotlin", "Room DB", "Jetpack Compose"],
-    icon: "📱",
-    image: "", // بعداً می‌تونی مسیر تصویر مثل /images/apps/app1.png بذاری
-    marketUrl: "#", // لینک بازار یا مایکت پس از انتشار
-    isPublished: false, // اگر منتشر شد true کن تا دکمه دانلود فعال بشه
-  },
-  {
-    id: 2,
-    title: "اپلیکیشن پایش سلامت و تغذیه",
-    category: "پزشکی و سلامت",
-    status: "در حال توسعه نهایی",
-    description:
-      "محاسبه کالری روزانه، ثبت نمودار پیشرفت و یادآورهای زمان‌بندی شده هوشمند با پشتیبانی از اعلان‌های پس‌زمینه.",
-    tags: ["Android Dev", "Java", "REST API", "WorkManager"],
-    icon: "🩺",
-    image: "",
-    marketUrl: "#",
-    isPublished: false,
+      "اپلیکیشن ماشین حساب هوشمند با رابط کاربری مدرن و قابلیت محاسبه سریع عملیات ریاضی.",
+    tags: [
+      "Capacitor",
+      "JavaScript",
+      "HTML5",
+      "vue.js",
+      "CSS3",
+      "Android Studio",
+    ],
+    icon: "",
+    image: "/images/apps/calculator.png",
+    repoUrl: "https://github.com/Ali-Git-1/App-Calculator",
+    downloadUrl: "/downloads/calculator.apk",
+    marketUrl: "#", // به محض تأیید مایکت، لینک مستقیم رو اینجا بذار
+    isPublished: false, // بعد از انتشار توی مایکت true کن
   },
 ];
 </script>
@@ -125,54 +121,74 @@ const apps = [
           </div>
 
           <!-- فوتر کارت: وضعیت انتشار و دکمه -->
+          <!-- فوتر کارت: لینک‌های گیت‌هاب، دانلود مستقیم و مارکت -->
           <div
-            class="pt-4 border-t border-slate-800/80 flex items-center justify-between"
+            class="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3"
           >
+            <!-- وضعیت انتشار -->
             <span class="text-xs text-slate-500 flex items-center gap-1.5">
               <span
                 class="w-2 h-2 rounded-full"
-                :class="
-                  app.isPublished
-                    ? 'bg-emerald-400 animate-ping'
-                    : 'bg-amber-400'
-                "
+                :class="app.isPublished ? 'bg-emerald-400' : 'bg-amber-400'"
               ></span>
               {{
-                app.isPublished
-                  ? "منتشر شده در استور"
-                  : "آماده‌سازی برای انتشار"
+                app.isPublished ? "منتشر شده در استور" : "در حال بررسی در مارکت"
               }}
             </span>
 
-            <a
-              v-if="app.isPublished"
-              :href="app.marketUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-md shadow-cyan-600/20 transition-all hover:scale-105"
-            >
-              دریافت از مارکت
-              <svg
-                class="w-3.5 h-3.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <!-- دکمه‌های اکشن -->
+            <div class="flex items-center gap-2">
+              <!-- دکمه گیت‌هاب -->
+              <a
+                v-if="app.repoUrl"
+                :href="app.repoUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="مشاهده سورس کد در گیت‌هاب"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 transition-all hover:scale-105"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57V21.09c-3.33.72-4.035-1.605-4.035-1.605-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.09-.735.09-.735 1.215.09 1.845 1.245 1.845 1.245 1.08 1.83 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22v3.285c0 .315.225.675.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                  />
+                </svg>
+                <span>گیت‌هاب</span>
+              </a>
 
-            <span
-              v-else
-              class="text-xs px-3 py-1.5 rounded-xl bg-slate-800/60 text-slate-400 border border-slate-700/40"
-            >
-              به‌زودی در مایکت و بازار
-            </span>
+              <!-- دکمه دانلود APK مستقیم -->
+              <a
+                v-if="app.downloadUrl"
+                :href="app.downloadUrl"
+                download
+                title="دانلود مستقیم فایل نصبی APK"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-emerald-300 bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-800/60 transition-all hover:scale-105"
+              >
+                <svg
+                  class="w-3.5 h-3.5 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                <span>دانلود APK</span>
+              </a>
+
+              <!-- دکمه مارکت بعد از انتشار -->
+              <a
+                v-if="app.isPublished && app.marketUrl && app.marketUrl !== '#'"
+                :href="app.marketUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 transition-all hover:scale-105"
+              >
+                <span>مایکت</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
