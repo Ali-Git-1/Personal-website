@@ -27,8 +27,20 @@ const apps = [
 </script>
 
 <template>
-  <section id="published-apps" class="py-20 relative z-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section
+    id="published-apps"
+    class="py-20 apps-section position-relative overflow-hidden z-10"
+  >
+    <!-- لایه‌های پس‌زمینه متحرک -->
+    <div class="bg-elements" aria-hidden="true">
+      <div class="grid-overlay"></div>
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 container position-relative z-1 py-4"
+    >
       <!-- عنوان بخش -->
       <div class="flex items-center gap-3 mb-10">
         <span
@@ -195,3 +207,78 @@ const apps = [
     </div>
   </section>
 </template>
+
+<style scoped>
+/* کانتینر اصلی بخش */
+.apps-section {
+  background-color: #0b0f19;
+  position: relative;
+}
+
+/* شبکه توری نوری در پس‌زمینه */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 40%,
+    transparent 85%
+  );
+  pointer-events: none;
+}
+/* گوی‌های نوری گرادیانت */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatOrb 8s ease-in-out infinite alternate;
+  opacity: 0.55;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* گوی آبی اول */
+.orb-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #2563eb 0%, #1e40af 70%);
+  top: 10%;
+  left: 5%;
+}
+
+/* گوی بنفش دوم */
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #7c3aed 0%, #4c1d95 70%);
+  bottom: 10%;
+  right: 5%;
+}
+
+/* انیمیشن شناور بودن نرم */
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(90px, 50px) scale(1.25);
+  }
+  66% {
+    transform: translate(-70px, -60px) scale(0.9);
+  }
+  100% {
+    transform: translate(40px, -30px) scale(1.15);
+  }
+}
+/* والدين که بچه‌ها توش شناور باشن */
+.bg-elements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+</style>
