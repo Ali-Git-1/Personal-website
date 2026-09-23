@@ -1,8 +1,19 @@
 <template>
   <section
     id="published-games"
-    class="py-20 bg-slate-950 border-t border-slate-800/60"
+    class="py-20 bg-slate-950 border-t border-slate-800/60 relative overflow-hidden"
   >
+    <!-- 🎮 Cyber Gaming Dynamic Background -->
+    <div class="pointer-events-none absolute inset-0 z-0">
+      <!-- افکت خطوط نوری و گرید گیمینگ -->
+      <div class="cyber-grid absolute inset-0 opacity-20"></div>
+      <div class="scanlines absolute inset-0 opacity-15"></div>
+
+      <!-- گوی‌های نوری پالس‌زن سایبرپانک -->
+      <div class="game-orb game-orb-purple"></div>
+      <div class="game-orb game-orb-cyan"></div>
+      <div class="game-orb game-orb-rose"></div>
+    </div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- عنوان بخش -->
       <div class="text-center max-w-2xl mx-auto mb-16">
@@ -163,3 +174,116 @@ const games = ref([
   },
 ]);
 </script>
+
+<style scoped>
+/* 🎮 Cyber Grid & Scanline Effects */
+.cyber-grid {
+  background-image:
+    linear-gradient(to right, rgba(139, 92, 246, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridSlide 12s linear infinite;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    #000 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    #000 60%,
+    transparent 100%
+  );
+}
+
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 51%
+  );
+  background-size: 100% 4px;
+}
+
+/* 🕹️ Pulsing Gaming Orbs */
+.game-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(75px);
+  will-change: transform, opacity;
+}
+
+.game-orb-purple {
+  width: 480px;
+  height: 480px;
+  top: -10%;
+  left: 15%;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.55) 0%,
+    transparent 70%
+  );
+  animation: cyberPulse 6s ease-in-out infinite alternate;
+}
+
+.game-orb-cyan {
+  width: 420px;
+  height: 420px;
+  bottom: 5%;
+  right: 10%;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.5) 0%,
+    transparent 70%
+  );
+  animation: cyberDrift 8s ease-in-out infinite alternate;
+}
+
+.game-orb-rose {
+  width: 350px;
+  height: 350px;
+  top: 45%;
+  left: 55%;
+  background: radial-gradient(
+    circle,
+    rgba(244, 63, 94, 0.4) 0%,
+    transparent 75%
+  );
+  animation: cyberPulse 7s ease-in-out infinite alternate-reverse;
+}
+
+/* ⚡ Keyframes for Smooth Animation */
+@keyframes gridSlide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes cyberPulse {
+  0% {
+    transform: scale(0.85) translate(-40px, -30px);
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.3) translate(60px, 40px);
+    opacity: 0.55;
+  }
+}
+
+@keyframes cyberDrift {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.25) translate(-80px, -60px);
+    opacity: 0.75;
+  }
+}
+</style>
