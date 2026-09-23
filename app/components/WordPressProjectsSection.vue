@@ -103,15 +103,15 @@ import { ref } from "vue";
 const sites = ref([
   {
     id: 1,
-    title: "وب‌سایت اختصاصی من", // اسم سایت قبلیت رو اینجا بذار
-    icon: "🌐",
+    title: "وب‌سایت بوک‌شر (BookSher)",
+    icon: "📚",
     description:
-      "طراحی، پیاده‌سازی و سئوی وب‌سایت با استفاده از وردپرس، سفارشی‌سازی قالب و بهینه‌سازی سرعت لودینگ صفحات.",
-    features: ["WordPress", "Elementor", "SEO", "WooCommerce"],
-    role: "طراح و مدیر سایت",
-    isOnline: false, // چون گفتی هاست فعلا غیرفعاله
-    statusText: "در حال تمدید سرور",
-    url: null, // بعد از فعال شدن لینکش رو اینجا می‌ذاری
+      "مرجع شعر و متون ادبی فارسی؛ طراحی و بهینه‌سازی شده با وردپرس با ظاهر واکنش‌گرا و سئوی اختصاصی.",
+    features: ["WordPress", "SEO", "Responsive", "UI/UX"],
+    role: "طراح و توسعه‌دهنده",
+    isOnline: true,
+    statusText: "آنلاین و فعال",
+    url: "https://booksher.ir",
   },
 ]);
 </script>
