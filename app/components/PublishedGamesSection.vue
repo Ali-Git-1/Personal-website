@@ -21,7 +21,7 @@
       </div>
 
       <!-- گرید بازی‌ها -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div
           v-for="game in games"
           :key="game.id"
@@ -88,20 +88,47 @@
               target="_blank"
               class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors"
             >
-              <span>دریافت فایل نصبی</span>
-              <span>↓</span>
+              <span>دریافت فایل نصبی↓</span>
             </a>
 
             <span v-else class="text-xs text-amber-400/80 font-medium">
               در حال توسعه ⏳
             </span>
+            <!-- لینک گیت‌هاب با آیکون -->
             <a
               v-if="game.repoUrl"
               :href="game.repoUrl"
               target="_blank"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors"
+              class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-sm transition-all"
             >
-              <span>📎 GitHub</span>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57V21.09c-3.33.72-4.035-1.605-4.035-1.605-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.09-.735.09-.735 1.215.09 1.845 1.245 1.845 1.245 1.08 1.83 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22v3.285c0 .315.225.675.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                />
+              </svg>
+              <span>GitHub</span>
+            </a>
+            <!-- لینک مایکت با آیکون -->
+            <a
+              v-if="game.myketUrl"
+              :href="game.myketUrl"
+              target="_blank"
+              class="flex items-center gap-2 bg-sky-900/30 hover:bg-sky-900/50 text-sky-400 border border-sky-900/50 px-3 py-1.5 rounded-lg text-sm transition-all"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              <span>مایکت</span>
             </a>
           </div>
         </div>
@@ -131,7 +158,8 @@ const games = ref([
       "Android Studio",
     ],
     platform: "Android",
-    downloadUrl: "/downloads/Game-Puzzle.apk", // یا آدرس کافه بازار/مایکت
+    downloadUrl: "/downloads/Game-Puzzle.apk",
+    myketUrl: "https://myket.ir/app/com.ali.puzzle",
   },
 ]);
 </script>
