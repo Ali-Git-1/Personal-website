@@ -80,12 +80,16 @@ const apps = [
               <div
                 class="w-16 h-16 rounded-2xl bg-slate-800/90 border border-slate-700/60 flex items-center justify-center text-3xl shrink-0 overflow-hidden shadow-inner group-hover:scale-105 transition-transform duration-300"
               >
+                <!-- بخش تصویر ماشین حساب -->
                 <img
                   v-if="app.image"
-                  :src="app.image"
+                  :src="
+                    app.image.startsWith('http')
+                      ? app.image
+                      : `${useRuntimeConfig().app.baseURL.replace(/\/$/, '')}${app.image.startsWith('/') ? '' : '/'}${app.image}`
+                  "
                   :alt="app.title"
                   class="w-full h-full object-cover"
-                  @error="$event.target.style.display = 'none'"
                 />
                 <span v-else>{{ app.icon }}</span>
               </div>
@@ -170,7 +174,11 @@ const apps = [
               <!-- دکمه دانلود APK مستقیم -->
               <a
                 v-if="app.downloadUrl"
-                :href="app.downloadUrl"
+                :href="
+                  app.downloadUrl.startsWith('http')
+                    ? app.downloadUrl
+                    : `${useRuntimeConfig().app.baseURL.replace(/\/$/, '')}${app.downloadUrl.startsWith('/') ? '' : '/'}${app.downloadUrl}`
+                "
                 download
                 title="دانلود مستقیم فایل نصبی APK"
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-emerald-300 bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-800/60 transition-all hover:scale-105"

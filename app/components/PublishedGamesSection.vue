@@ -47,7 +47,7 @@
                 <!-- اگر عکس بود -->
                 <img
                   v-if="game.icon.startsWith('/')"
-                  :src="game.icon"
+                  :src="`${useRuntimeConfig().app.baseURL.replace(/\/$/, '')}${game.icon}`"
                   :alt="game.title"
                   class="w-full h-full object-cover"
                 />
@@ -94,7 +94,7 @@
 
             <a
               v-if="game.downloadUrl"
-              :href="game.downloadUrl"
+              :href="`${useRuntimeConfig().app.baseURL.replace(/\/$/, '')}${game.downloadUrl}`"
               download
               target="_blank"
               class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors"
