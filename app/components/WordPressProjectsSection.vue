@@ -18,7 +18,7 @@
           <span>WordPress & CMS</span>
         </div>
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-          پروژه‌های وردپرس و وب‌سایت‌ها
+          پروژه‌های وردپرس
         </h2>
         <p class="mt-4 text-slate-400 text-sm sm:text-base">
           طراحی، شخصی‌سازی قالب و راه‌اندازی سایت‌های اختصاصی بر پایه وردپرس
@@ -108,7 +108,7 @@ import { ref } from "vue";
 const sites = ref([
   {
     id: 1,
-    title: "وب‌سایت بوک‌شر (BookSher)",
+    title: "وب‌سایت ایران شعر (BookSher)",
     icon: "📚",
     description:
       "مرجع شعر و متون ادبی فارسی؛ طراحی و بهینه‌سازی شده با وردپرس با ظاهر واکنش‌گرا و سئوی اختصاصی.",

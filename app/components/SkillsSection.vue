@@ -84,11 +84,6 @@ const skills = ref([
     color: "text-pink-400",
   },
   {
-    name: "PHP",
-    icon: "🐘",
-    color: "text-indigo-400",
-  },
-  {
     name: "WordPress",
     icon: "🌐",
     color: "text-blue-500",
