@@ -154,13 +154,27 @@
                   {{ project.description }}
                 </p>
                 <div class="mt-6 flex flex-wrap gap-2">
-                  <span
-                    v-for="tech in project.techs"
-                    :key="tech"
-                    class="px-2.5 py-1 text-xs font-medium rounded bg-slate-900 text-slate-300 border border-slate-800"
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    <span
+                      v-for="tech in project.techs"
+                      :key="tech"
+                      class="px-2.5 py-1 text-xs font-medium rounded bg-slate-900 text-slate-300 border border-slate-800"
+                    >
+                      {{ tech }}
+                    </span>
+                  </div>
+
+                  <!-- دکمه مشاهده سورس در گیت‌هاب -->
+                  <a
+                    v-if="project.github"
+                    :href="project.github"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-5 inline-flex items-center justify-center gap-2 text-xs font-semibold py-2 px-3 rounded-lg bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 border border-slate-800 hover:border-emerald-500 transition-all duration-300"
                   >
-                    {{ tech }}
-                  </span>
+                    <span>مشاهده کد منبع در گیت‌هاب</span>
+                    <span>←</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -222,25 +236,28 @@ onMounted(() => {
 
 const projects = ref([
   {
-    title: "سیستم فروشگاهی آنلاین",
+    title: "فروشگاه آنلاین Monox",
     description:
-      "یک برنامه تحت وب فروشگاهی پیشرفته با قابلیت فیلترینگ محصولات، سبد خرید پویا و هماهنگی کامل با موبایل.",
-    icon: "🛒",
-    techs: ["Nuxt 3", "Tailwind", "Pinia"],
+      "وب‌سایت فروشگاهی با دسته‌بندی هوشمند، فیلتر پیشرفته محصولات، رابط کاربری ریسپانسیو و مدیریت سبد خرید.",
+    icon: "🛍️",
+    techs: ["Vue.js", "Bootstrap", "JavaScript", "Responsive"],
+    github: "https://github.com/Ali-Git-1/Monox",
   },
   {
-    title: "داشبورد مدیریتی ادمین",
+    title: "وب‌سایت مقالات (Article Website)",
     description:
-      "داشبوردی زیبا برای نمایش آمار و ارقام، نمودارهای تحلیلی و مدیریت کاربران سیستم.",
-    icon: "📊",
-    techs: ["Vue 3", "Chart.js", "Tailwind"],
+      "پلتفرم انتشار و مطالعه مقالات با طراحی تمیز، ساختار دسته‌بندی‌شده و بهینه‌سازی کامل برای تجربه کاربری.",
+    icon: "📰",
+    techs: ["Vue.js", "JavaScript", "CSS3", "UI/UX"],
+    github: "https://github.com/Ali-Git-1/Article-Website",
   },
   {
-    title: "اپلیکیشن مدیریت وظایف",
+    title: "وب‌سایت و پورتفولیوی شخصی",
     description:
-      "ابزاری سبک و سریع برای دسته‌بندی و زمان‌بندی کارهای روزانه به همراه ذخیره‌سازی محلی.",
-    icon: "✅",
-    techs: ["Nuxt 3", "LocalStorage"],
+      "پورتفولیوی تعاملی با انیمیشن‌های نرم، بخش‌بندی پروژه‌ها و مهارت‌ها با معماری مدرن و تمیز.",
+    icon: "⚡",
+    techs: ["Vue 3", "Tailwind CSS", "Vite", "JavaScript"],
+    github: "https://github.com/Ali-Git-1/Personal-website",
   },
 ]);
 </script>
