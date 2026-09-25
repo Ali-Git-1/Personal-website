@@ -1,9 +1,14 @@
 <template>
   <section
     id="wordpress-projects"
-    class="py-20 bg-slate-900 border-t border-slate-800/60"
+    class="relative overflow-hidden py-20 bg-slate-900 border-t border-slate-800/60"
   >
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="cyber-space">
+      <div class="moving-grid"></div>
+      <div class="floating-light"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- عنوان بخش -->
       <div class="text-center max-w-2xl mx-auto mb-16">
         <div
@@ -21,11 +26,11 @@
       </div>
 
       <!-- کارت‌های پروژه‌ها -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="flex justify-center">
         <div
           v-for="site in sites"
           :key="site.id"
-          class="group relative bg-slate-950/70 border border-slate-800 rounded-2xl p-6 hover:border-sky-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.15)] flex flex-col justify-between"
+          class="w-full max-w-md group relative bg-slate-950/70 border border-slate-800 rounded-2xl p-6 hover:border-sky-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.15)] flex flex-col justify-between"
         >
           <!-- بالا: لوگو و تگ وضعیت -->
           <div>
@@ -115,3 +120,61 @@ const sites = ref([
   },
 ]);
 </script>
+
+<style scoped>
+.cyber-space {
+  position: absolute;
+  inset: 0;
+  perspective: 450px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* گرید متحرک نئونی */
+.moving-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image:
+    linear-gradient(to right, rgba(0, 180, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 180, 255, 0.25) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(70deg);
+  animation: moveGrid 3s linear infinite;
+}
+
+/* هاله نوری ضربان‌دار */
+.floating-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 160, 255, 0.45), transparent 70%);
+  filter: blur(60px);
+  transform: translate(-50%, -50%);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moveGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 50px;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+</style>
