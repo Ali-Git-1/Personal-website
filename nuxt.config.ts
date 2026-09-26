@@ -8,6 +8,15 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/Personal-website/", // اسم دقیق ریپازیتوری
     buildAssetsDir: "assets", // تغییر نام پوشه _nuxt به assets تا گیت‌هاب فایل‌ها رو بلاک نکنه
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/Personal-website/favicon.ico",
+        },
+      ],
+    },
   },
 
   // اختیاری ولی مفید برای تولید استاتیک بی‌نقص
