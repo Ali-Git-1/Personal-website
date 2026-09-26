@@ -175,7 +175,7 @@
                       rel="noopener noreferrer"
                       class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all duration-300 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/30"
                     >
-                      <span>مشاهده دمو</span>
+                      <span>مشاهده آنلاین</span>
                       <span>↗</span>
                     </a>
 
