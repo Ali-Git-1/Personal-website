@@ -154,6 +154,7 @@
                   {{ project.description }}
                 </p>
                 <div class="mt-6 flex flex-wrap gap-2">
+                  <!-- بج‌های تکنولوژی -->
                   <div class="mt-6 flex flex-wrap gap-2">
                     <span
                       v-for="tech in project.techs"
@@ -164,17 +165,32 @@
                     </span>
                   </div>
 
-                  <!-- دکمه مشاهده سورس در گیت‌هاب -->
-                  <a
-                    v-if="project.github"
-                    :href="project.github"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-5 inline-flex items-center justify-center gap-2 text-xs font-semibold py-2 px-3 rounded-lg bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 border border-slate-800 hover:border-emerald-500 transition-all duration-300"
-                  >
-                    <span>مشاهده کد منبع در گیت‌هاب</span>
-                    <span>←</span>
-                  </a>
+                  <!-- دکمه‌های اکشن: مشاهده دمو زنده + مشاهده کد سورس -->
+                  <div class="mt-5 grid grid-cols-2 gap-2">
+                    <!-- دکمه دمو آنلاین -->
+                    <a
+                      v-if="project.demo"
+                      :href="project.demo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all duration-300 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/30"
+                    >
+                      <span>مشاهده دمو</span>
+                      <span>↗</span>
+                    </a>
+
+                    <!-- دکمه گیت‌هاب -->
+                    <a
+                      v-if="project.github"
+                      :href="project.github"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all duration-300"
+                    >
+                      <span>GitHub</span>
+                      <span>←</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -242,6 +258,7 @@ const projects = ref([
     icon: "🛍️",
     techs: ["Vue.js", "Bootstrap", "JavaScript", "Responsive"],
     github: "https://github.com/Ali-Git-1/Monox",
+    demo: "https://ali-git-1.github.io/Monox/",
   },
   {
     title: "وب‌سایت مقالات (Article Website)",
@@ -250,6 +267,7 @@ const projects = ref([
     icon: "📰",
     techs: ["Vue.js", "JavaScript", "CSS3", "UI/UX"],
     github: "https://github.com/Ali-Git-1/Article-Website",
+    demo: "https://ali-git-1.github.io/Article-Website/",
   },
   {
     title: "وب‌سایت و پورتفولیوی شخصی",
@@ -258,6 +276,7 @@ const projects = ref([
     icon: "⚡",
     techs: ["Vue 3", "Tailwind CSS", "Vite", "JavaScript"],
     github: "https://github.com/Ali-Git-1/Personal-website",
+    demo: "https://ali-git-1.github.io/Personal-website/",
   },
 ]);
 </script>
