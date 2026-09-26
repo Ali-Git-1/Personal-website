@@ -119,32 +119,91 @@
 
       <WordPressProjectsSection />
 
-      <!-- بخش پروژه‌ها (Projects) -->
-      <section id="projects" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- بخش پروژه‌ها (Projects) با بک‌گراند متحرک و مدرن -->
+      <section
+        id="projects"
+        class="relative py-28 overflow-hidden bg-slate-950"
+      >
+        <!-- کانواس متحرک ذرات -->
+        <canvas
+          ref="particleCanvas"
+          class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60"
+        ></canvas>
+
+        <!-- ۱. المان‌های نورانی شناور و متحرک در پس‌زمینه (Glowing Orbs) -->
+        <div
+          class="absolute -top-40 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-slow"
+        ></div>
+        <div
+          class="absolute top-1/2 -left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-blob"
+        ></div>
+        <div
+          class="absolute -bottom-32 right-10 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"
+        ></div>
+
+        <!-- ۲. پترن مشبک و شطرنجی مدرن پس‌زمینه (Tech Grid Pattern) -->
+        <div
+          class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"
+        ></div>
+
+        <!-- ۳. گرادیان خطی برای محو کردن نرم لبه‌های بالا و پایین سکشن -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900 pointer-events-none"
+        ></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- هدر سکشن با تگ متحرک -->
           <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-              نمونه‌کارهای منتخب
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mb-4 shadow-sm shadow-emerald-500/20"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"
+              ></span>
+              پروژه‌های پرچمدار
+            </div>
+            <h2
+              class="text-3xl font-extrabold text-white sm:text-4xl tracking-tight"
+            >
+              نمونه‌کارهای
+              <span
+                class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"
+                >منتخب</span
+              >
             </h2>
-            <p class="mt-4 text-slate-400">
-              پروژه‌هایی که صفر تا صد پیاده‌سازی شده‌اند.
+            <p class="mt-4 text-slate-400 text-sm sm:text-base">
+              پروژه‌هایی که صفر تا صد پیاده‌سازی شده‌اند و روی وب زنده هستند.
             </p>
           </div>
 
+          <!-- گرید کارت‌های شیشه‌ای و تعاملی -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
               v-for="project in projects"
               :key="project.title"
-              class="group bg-slate-950 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition-all duration-300 flex flex-col h-full"
+              class="group relative bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-emerald-500/50 rounded-2xl overflow-hidden hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-500 flex flex-col h-full hover:-translate-y-1.5"
             >
+              <!-- نوار گرادیان بالای کارت در حالت Hover -->
               <div
-                class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-300"
+                class="h-1 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              ></div>
+
+              <!-- آیکون و هدر کارت -->
+              <div
+                class="relative aspect-video bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-500 border-b border-slate-800/60"
               >
-                {{ project.icon }}
+                <div
+                  class="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                ></div>
+                <span class="relative drop-shadow-md select-none">{{
+                  project.icon
+                }}</span>
               </div>
+
+              <!-- بدنه کارت -->
               <div class="p-6 flex flex-col flex-grow text-right">
                 <h3
-                  class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors"
+                  class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors duration-300"
                 >
                   {{ project.title }}
                 </h3>
@@ -153,44 +212,43 @@
                 >
                   {{ project.description }}
                 </p>
-                <div class="mt-6 flex flex-wrap gap-2">
-                  <!-- بج‌های تکنولوژی -->
-                  <div class="mt-6 flex flex-wrap gap-2">
-                    <span
-                      v-for="tech in project.techs"
-                      :key="tech"
-                      class="px-2.5 py-1 text-xs font-medium rounded bg-slate-900 text-slate-300 border border-slate-800"
-                    >
-                      {{ tech }}
-                    </span>
-                  </div>
 
-                  <!-- دکمه‌های اکشن: مشاهده دمو زنده + مشاهده کد سورس -->
-                  <div class="mt-5 grid grid-cols-2 gap-2">
-                    <!-- دکمه دمو آنلاین -->
-                    <a
-                      v-if="project.demo"
-                      :href="project.demo"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all duration-300 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/30"
-                    >
-                      <span>مشاهده آنلاین</span>
-                      <span>↗</span>
-                    </a>
+                <!-- برچسب تکنولوژی‌ها -->
+                <div class="mt-6 flex flex-wrap gap-1.5">
+                  <span
+                    v-for="tech in project.techs"
+                    :key="tech"
+                    class="px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-950/80 text-emerald-300/80 border border-slate-800 group-hover:border-emerald-950 transition-colors"
+                  >
+                    {{ tech }}
+                  </span>
+                </div>
 
-                    <!-- دکمه گیت‌هاب -->
-                    <a
-                      v-if="project.github"
-                      :href="project.github"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all duration-300"
-                    >
-                      <span>GitHub</span>
-                      <span>←</span>
-                    </a>
-                  </div>
+                <!-- دکمه‌های اکشن (مشاهده آنلاین و گیت‌هاب) -->
+                <div
+                  class="mt-6 grid grid-cols-2 gap-2.5 pt-4 border-t border-slate-800/60"
+                >
+                  <a
+                    v-if="project.demo"
+                    :href="project.demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all duration-300 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-[1.02]"
+                  >
+                    <span>مشاهده آنلاین</span>
+                    <span>↗</span>
+                  </a>
+
+                  <a
+                    v-if="project.github"
+                    :href="project.github"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    <span>GitHub</span>
+                    <span>←</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -279,6 +337,92 @@ const projects = ref([
     demo: "https://ali-git-1.github.io/Personal-website/",
   },
 ]);
+// کانواس ذرات متحرک تعاملی
+const particleCanvas = ref(null);
+let animId = null,
+  handleResize = null,
+  handleMouseMove = null;
+
+onMounted(() => {
+  const canvas = particleCanvas.value;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w = (canvas.width = canvas.parentElement.offsetWidth);
+  let h = (canvas.height = canvas.parentElement.offsetHeight);
+
+  handleResize = () => {
+    if (!canvas?.parentElement) return;
+    w = canvas.width = canvas.parentElement.offsetWidth;
+    h = canvas.height = canvas.parentElement.offsetHeight;
+  };
+  window.addEventListener("resize", handleResize);
+
+  const mouse = { x: null, y: null, radius: 120 };
+  handleMouseMove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  };
+  window.addEventListener("mousemove", handleMouseMove);
+
+  const count = Math.min(Math.floor((w * h) / 12000), 50);
+  const particles = Array.from({ length: count }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 0.8,
+    vy: (Math.random() - 0.5) * 0.8,
+    size: Math.random() * 2 + 1,
+    color: Math.random() > 0.5 ? "#10b981" : "#06b6d4",
+  }));
+
+  const draw = () => {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach((p, i) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(16, 185, 129, ${0.2 * (1 - dist / 110)})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+
+      if (mouse.x !== null) {
+        const mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+        if (mDist < mouse.radius) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(6, 182, 212, ${0.4 * (1 - mDist / mouse.radius)})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+    });
+    animId = requestAnimationFrame(draw);
+  };
+  draw();
+});
+
+onUnmounted(() => {
+  if (animId) cancelAnimationFrame(animId);
+  if (handleResize) window.removeEventListener("resize", handleResize);
+  if (handleMouseMove) window.removeEventListener("mousemove", handleMouseMove);
+});
 </script>
 
 <style>
@@ -296,5 +440,47 @@ html {
 .fade-out-leave-to {
   opacity: 0;
   transform: scale(1.05);
+}
+/* پترن مشبک پس‌زمینه */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* انیمیشن پالس آرام برای نورها */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.15) translate(20px, -20px);
+    opacity: 0.25;
+  }
+}
+
+/* انیمیشن شناوری نور دوم */
+@keyframes blob-move {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-blob {
+  animation: blob-move 10s ease-in-out infinite;
 }
 </style>
