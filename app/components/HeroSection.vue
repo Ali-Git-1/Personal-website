@@ -1,8 +1,10 @@
 <template>
   <section id="about" class="relative py-20 md:py-32 overflow-hidden">
-    <div
-      class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"
-    ></div>
+    <canvas
+      ref="codeRainCanvas"
+      class="absolute inset-0 w-full h-full opacity-15 pointer-events-none"
+      aria-hidden="true"
+    ></canvas>
 
     <div
       class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none"
@@ -157,34 +159,153 @@ const typeWriter = () => {
 
   setTimeout(typeWriter, typeSpeed);
 };
+const codeRainCanvas = ref(null);
+let stopCodeRain = null;
+
+function startCodeRain(canvas) {
+  const ctx = canvas.getContext("2d");
+  const symbols = [
+    "{",
+    "}",
+    "(",
+    ")",
+    "[",
+    "]",
+    "<",
+    ">",
+    "=>",
+    "==",
+    "!=",
+    "&&",
+    "||",
+    "++",
+    "--",
+    "+=",
+    "?:",
+    "??",
+    "/",
+    "\\",
+    ";",
+    ":",
+    "$",
+    "#",
+    "@",
+    "*",
+    "%",
+    "~",
+    "_",
+    "//",
+    "0",
+    "1",
+    "01",
+    "10",
+    "fn",
+    "if",
+    "do",
+    "OK",
+  ];
+
+  const fontSize = 22;
+  const trailLength = 50;
+
+  let columns = [];
+  let width = 0;
+  let height = 0;
+  let frameId = 0;
+  let lastTime = 0;
+
+  const randomSymbol = () =>
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  function createColumn() {
+    return {
+      y: -Math.random() * height, // شروع از بالای صفحه با تاخیر تصادفی
+      speed: 70 + Math.random() * 90, // پیکسل در ثانیه
+      cell: 0,
+      chars: Array.from({ length: trailLength }, randomSymbol),
+    };
+  }
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = canvas.offsetWidth;
+    height = canvas.offsetHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = `${fontSize}px monospace`;
+    columns = Array.from(
+      { length: Math.floor(width / fontSize) },
+      createColumn,
+    );
+  }
+
+  function draw(time) {
+    frameId = requestAnimationFrame(draw);
+    const dt = Math.min((time - lastTime) / 1000, 0.05); // ثانیه
+    lastTime = time;
+
+    ctx.clearRect(0, 0, width, height);
+
+    columns.forEach((col, i) => {
+      col.y += col.speed * dt;
+
+      // وقتی سر ستون وارد خانهٔ جدید شد، یک حرف جدید اضافه کن
+      const cell = Math.floor(col.y / fontSize);
+      if (cell !== col.cell) {
+        col.chars.unshift(randomSymbol());
+        col.chars.pop();
+        col.cell = cell;
+      }
+
+      for (let k = 0; k < trailLength; k++) {
+        const y = col.y - k * fontSize;
+        if (y < -fontSize || y > height) continue;
+        ctx.globalAlpha = (1 - k / trailLength) ** 2;
+        ctx.fillStyle = k === 0 ? "#6ee7b7" : "#10b981";
+        ctx.fillText(col.chars[k], i * fontSize, y);
+      }
+
+      // ستون که کامل از پایین رد شد، دوباره از بالا شروع کن
+      if (col.y - trailLength * fontSize > height) {
+        Object.assign(col, createColumn(), {
+          y: -Math.random() * height * 0.5,
+        });
+      }
+    });
+
+    ctx.globalAlpha = 1;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  frameId = requestAnimationFrame(draw);
+
+  return () => {
+    cancelAnimationFrame(frameId);
+    window.removeEventListener("resize", resize);
+  };
+}
 
 const onImageError = () => {
   imageError.value = true;
 };
 onMounted(() => {
   typeWriter();
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (codeRainCanvas.value && !reduceMotion) {
+    stopCodeRain = startCodeRain(codeRainCanvas.value);
+  }
+
+  onUnmounted(() => {
+    stopCodeRain?.();
+  });
 });
 </script>
 
 <style>
-/* گرید نقطه‌ای پررنگ‌تر + ماسک محو شونده برای زیبایی */
-.bg-grid-pattern {
-  background-image: radial-gradient(
-    rgba(52, 211, 153, 0.35) 1.2px,
-    transparent 1.2px
-  );
-  background-size: 28px 28px;
-  mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 40%,
-    black 30%,
-    transparent 75%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 40%,
-    black 30%,
-    transparent 75%
-  );
-}
 /* هاله نوری شناور - حرکت واضح‌تر و بزرگ‌تر */
 @keyframes blob-float {
   0%,
