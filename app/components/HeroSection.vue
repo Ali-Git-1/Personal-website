@@ -1,17 +1,13 @@
 <template>
-  <!-- بخش معرفی (Hero Section) به همراه عکس شخصی -->
   <section id="about" class="relative py-20 md:py-32 overflow-hidden">
-    <!-- لایه ۱: گرید شطرنجی برنامه‌نویسی -->
     <div
       class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"
     ></div>
 
-    <!-- لایه ۲: هاله های نوری متحرک نئونی (پررنگ‌تر شده) -->
     <div
       class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none"
     ></div>
 
-    <!-- خط اسکن متحرک: یک نور از بالای صفحه به پایین حرکت می‌کند -->
     <div class="scan-line pointer-events-none"></div>
 
     <div
@@ -20,18 +16,15 @@
     <div
       class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
     >
-      <!-- متن معرفی -->
       <div class="text-right">
         <span
           class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
         >
           آماده برای پروژه‌های جدید
         </span>
-        <!-- عنوان اصلی و نام کامل (بهینه‌سازی کامل برای سئو) -->
         <h1
           class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
         >
-          <!-- افکت گلیچ روی نام برای برندینگ شخصی -->
           <span
             class="glitch-wrapper block mb-3"
             dir="ltr"
@@ -72,19 +65,15 @@
         </div>
       </div>
 
-      <!-- تصویر شخصی شما (Personal Photo Container) -->
       <div class="flex justify-center">
         <div class="relative group">
-          <!-- افکت نورانی و گرادینت پشت تصویر -->
           <div
             class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-40 blur-xl group-hover:opacity-75 transition duration-500"
           ></div>
 
-          <!-- قاب تصویر -->
           <div
             class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-3xl overflow-hidden bg-slate-900 border border-emerald-500/30 shadow-[0_0_60px_rgba(16,185,129,0.25)] flex items-center justify-center"
           >
-            <!-- در صورتی که تصویر شما در پوشه public/me.jpg قرار گیرد نمایش داده می‌شود -->
             <img
               src="/me.jpg"
               alt="My Profile"
@@ -93,7 +82,6 @@
               v-if="!imageError"
             />
 
-            <!-- فال‌بک در صورتی که هنوز عکست را داخل پوشه public نگذاشته باشی -->
             <div v-else class="text-center p-6">
               <div
                 class="w-24 h-24 mx-auto rounded-full bg-slate-800 border-2 border-dashed border-slate-600 flex items-center justify-center text-3xl mb-4 text-emerald-400"

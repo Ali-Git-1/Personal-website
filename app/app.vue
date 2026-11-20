@@ -1,12 +1,10 @@
 <template>
   <div>
-    <!-- ۱. صفحه پیش‌نمایش بارگذاری اولیه (Intro / Preloader) -->
     <Transition name="fade-out">
       <div
         v-if="isLoading"
         class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950 text-slate-100 font-mono select-none px-4"
       >
-        <!-- آیکون و پس‌زمینه نوری -->
         <div class="relative flex flex-col items-center">
           <div
             class="w-20 h-20 mb-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-3xl shadow-[0_0_50px_rgba(16,185,129,0.3)] animate-pulse"
@@ -27,7 +25,6 @@
             {{ currentStatus }}
           </p>
 
-          <!-- نوار پیشرفت (Progress Bar) -->
           <div
             class="w-64 sm:w-80 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-6 border border-slate-700/50"
           >
@@ -37,7 +34,6 @@
             ></div>
           </div>
 
-          <!-- درصد پیشرفت -->
           <div class="text-xs text-slate-500 mt-3 font-semibold">
             [ {{ progress }}% ]
           </div>
@@ -45,11 +41,9 @@
       </div>
     </Transition>
 
-    <!-- ۲. محتوای اصلی سایت -->
     <div
       class="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-900"
     >
-      <!-- هدر / ناوبری (Header) -->
       <header
         class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800"
       >
@@ -125,18 +119,15 @@
 
       <WordPressProjectsSection />
 
-      <!-- بخش پروژه‌ها (Projects) با بک‌گراند متحرک و مدرن -->
       <section
         id="projects"
         class="relative py-28 overflow-hidden bg-slate-950"
       >
-        <!-- کانواس متحرک ذرات -->
         <canvas
           ref="particleCanvas"
           class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60"
         ></canvas>
 
-        <!-- ۱. المان‌های نورانی شناور و متحرک در پس‌زمینه (Glowing Orbs) -->
         <div
           class="absolute -top-40 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-slow"
         ></div>
@@ -147,18 +138,15 @@
           class="absolute -bottom-32 right-10 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"
         ></div>
 
-        <!-- ۲. پترن مشبک و شطرنجی مدرن پس‌زمینه (Tech Grid Pattern) -->
         <div
           class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"
         ></div>
 
-        <!-- ۳. گرادیان خطی برای محو کردن نرم لبه‌های بالا و پایین سکشن -->
         <div
           class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900 pointer-events-none"
         ></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- هدر سکشن با تگ متحرک -->
           <div class="text-center max-w-2xl mx-auto mb-16">
             <div
               class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mb-4 shadow-sm shadow-emerald-500/20"
@@ -182,19 +170,16 @@
             </p>
           </div>
 
-          <!-- گرید کارت‌های شیشه‌ای و تعاملی -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
               v-for="project in projects"
               :key="project.title"
               class="group relative bg-slate-900/60 backdrop-blur-xl border border-slate-800 hover:border-emerald-500/50 rounded-2xl overflow-hidden hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-500 flex flex-col h-full hover:-translate-y-1.5"
             >
-              <!-- نوار گرادیان بالای کارت در حالت Hover -->
               <div
                 class="h-1 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               ></div>
 
-              <!-- آیکون و هدر کارت -->
               <div
                 class="relative aspect-video bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-500 border-b border-slate-800/60"
               >
@@ -206,7 +191,6 @@
                 }}</span>
               </div>
 
-              <!-- بدنه کارت -->
               <div class="p-6 flex flex-col flex-grow text-right">
                 <h3
                   class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors duration-300"
@@ -219,7 +203,6 @@
                   {{ project.description }}
                 </p>
 
-                <!-- برچسب تکنولوژی‌ها -->
                 <div class="mt-6 flex flex-wrap gap-1.5">
                   <span
                     v-for="tech in project.techs"
@@ -230,7 +213,6 @@
                   </span>
                 </div>
 
-                <!-- دکمه‌های اکشن (مشاهده آنلاین و گیت‌هاب) -->
                 <div
                   class="mt-6 grid grid-cols-2 gap-2.5 pt-4 border-t border-slate-800/60"
                 >
@@ -276,14 +258,12 @@ import PublishedAppsSection from "./components/PublishedAppsSection.vue";
 import PublishedGamesSection from "./components/PublishedGamesSection.vue";
 import WordPressProjectsSection from "./components/WordPressProjectsSection.vue";
 
-// متغیرهای لودینگ
 const isLoading = ref(true);
 const progress = ref(0);
-const currentStatus = ref("Connecting to core modules...");
+const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
 
 // -----------------------------
 
-// انیمیشن و شبیه‌سازی لودینگ هوشمند در اولین لود صفحه
 onMounted(() => {
   const steps = [
     { threshold: 25, status: "بارگذاری پیکربندی و محیط..." },
@@ -297,7 +277,6 @@ onMounted(() => {
 
   const timer = setInterval(() => {
     if (progress.value < 100) {
-      // افزایش رندوم بین ۳ تا ۷ درصد برای طبیعی‌تر شدن
       progress.value += Math.floor(Math.random() * 5) + 3;
       if (progress.value > 100) progress.value = 100;
 
@@ -309,7 +288,7 @@ onMounted(() => {
       clearInterval(timer);
       setTimeout(() => {
         isLoading.value = false;
-      }, 800); // مکث کوتاه برای دیدن ۱۰۰٪
+      }, 800);
     }
   }, 100);
 });
@@ -343,7 +322,6 @@ const projects = ref([
     demo: "https://ali-git-1.github.io/Personal-website/",
   },
 ]);
-// کانواس ذرات متحرک تعاملی
 const particleCanvas = ref(null);
 let animId = null,
   handleResize = null,
@@ -437,7 +415,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* انیمیشن خروج نرم پری‌لودر */
 .fade-out-leave-active {
   transition:
     opacity 0.6s ease,
@@ -447,7 +424,7 @@ html {
   opacity: 0;
   transform: scale(1.05);
 }
-/* پترن مشبک پس‌زمینه */
+
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image:
@@ -455,7 +432,6 @@ html {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
-/* انیمیشن پالس آرام برای نورها */
 @keyframes pulse-slow {
   0%,
   100% {
@@ -468,7 +444,6 @@ html {
   }
 }
 
-/* انیمیشن شناوری نور دوم */
 @keyframes blob-move {
   0%,
   100% {
