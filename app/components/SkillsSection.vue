@@ -17,11 +17,6 @@
       { }
     </div>
 
-    <!-- خطوط برنامه‌نویسی پس‌زمینه -->
-    <div
-      class="absolute inset-0 bg-lines-pattern opacity-40 pointer-events-none float-slow"
-    ></div>
-
     <!-- کاراکترهای شناور کم‌رنگ سینتکس برنامه‌نویسی در پس‌زمینه -->
     <div
       class="absolute -top-6 left-10 text-8xl font-mono text-slate-800/20 select-none pointer-events-none font-black float-medium"
@@ -110,15 +105,6 @@ const skills = ref([
 </script>
 
 <style>
-/* خطوط گرید پررنگ‌تر */
-.bg-lines-pattern {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: linear-gradient(to bottom, black, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-}
 /* انیمیشن هاله‌های نوری */
 @keyframes blob {
   0%,

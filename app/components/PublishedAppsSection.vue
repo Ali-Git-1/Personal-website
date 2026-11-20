@@ -33,7 +33,6 @@ const apps = [
   >
     <!-- لایه‌های پس‌زمینه متحرک -->
     <div class="bg-elements" aria-hidden="true">
-      <div class="grid-overlay"></div>
       <div class="glow-orb orb-1"></div>
       <div class="glow-orb orb-2"></div>
     </div>
@@ -223,22 +222,7 @@ const apps = [
   position: relative;
 }
 
-/* شبکه توری نوری در پس‌زمینه */
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 40%,
-    transparent 85%
-  );
-  pointer-events: none;
-}
+
 /* گوی‌های نوری گرادیانت */
 .glow-orb {
   position: absolute;

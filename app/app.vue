@@ -139,10 +139,6 @@
         ></div>
 
         <div
-          class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"
-        ></div>
-
-        <div
           class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900 pointer-events-none"
         ></div>
 
@@ -423,13 +419,6 @@ html {
 .fade-out-leave-to {
   opacity: 0;
   transform: scale(1.05);
-}
-
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 @keyframes pulse-slow {

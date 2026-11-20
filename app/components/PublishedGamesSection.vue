@@ -6,7 +6,6 @@
     <!-- 🎮 Cyber Gaming Dynamic Background -->
     <div class="pointer-events-none absolute inset-0 z-0">
       <!-- افکت خطوط نوری و گرید گیمینگ -->
-      <div class="cyber-grid absolute inset-0 opacity-20"></div>
       <div class="scanlines absolute inset-0 opacity-15"></div>
 
       <!-- گوی‌های نوری پالس‌زن سایبرپانک -->
@@ -177,23 +176,6 @@ const games = ref([
 
 <style scoped>
 /* 🎮 Cyber Grid & Scanline Effects */
-.cyber-grid {
-  background-image:
-    linear-gradient(to right, rgba(139, 92, 246, 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 92, 246, 0.2) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridSlide 12s linear infinite;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 50%,
-    #000 60%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 50%,
-    #000 60%,
-    transparent 100%
-  );
-}
 
 .scanlines {
   background: linear-gradient(
