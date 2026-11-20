@@ -228,16 +228,29 @@ function startCodeRain(canvas) {
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = canvas.offsetWidth;
-    height = canvas.offsetHeight;
+    const newWidth = canvas.offsetWidth;
+    const newHeight = canvas.offsetHeight;
+
+    if (
+      newWidth === width &&
+      newHeight === height &&
+      canvas.width === newWidth * dpr
+    )
+      return;
+
+    width = newWidth;
+    height = newHeight;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.font = `${fontSize}px monospace`;
-    columns = Array.from(
-      { length: Math.floor(width / fontSize) },
-      createColumn,
-    );
+
+    const count = Math.floor(width / fontSize);
+    if (count > columns.length) {
+      while (columns.length < count) columns.push(createColumn());
+    } else {
+      columns.length = count;
+    }
   }
 
   function draw(time) {
