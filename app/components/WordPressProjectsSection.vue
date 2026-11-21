@@ -3,9 +3,17 @@
     id="wordpress-projects"
     class="relative overflow-hidden py-20 bg-slate-900 border-t border-slate-800/60"
   >
-    <div class="cyber-space">
-      <div class="moving-grid"></div>
-      <div class="floating-light"></div>
+    <div class="cyber-space" aria-hidden="true">
+      <span
+        v-for="(s, i) in streaks"
+        :key="i"
+        class="streak"
+        :style="{
+          '--top': s.top,
+          '--delay': s.delay,
+          '--duration': s.duration,
+        }"
+      ></span>
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,6 +113,14 @@
 <script setup>
 import { ref } from "vue";
 
+const streaks = [
+  { top: "5%", delay: "0s", duration: "5s" },
+  { top: "25%", delay: "1.8s", duration: "6.5s" },
+  { top: "45%", delay: "3.2s", duration: "5.5s" },
+  { top: "65%", delay: "0.9s", duration: "7s" },
+  { top: "85%", delay: "4s", duration: "6s" },
+];
+
 const sites = ref([
   {
     id: 1,
@@ -125,54 +141,93 @@ const sites = ref([
 .cyber-space {
   position: absolute;
   inset: 0;
-  perspective: 450px;
   overflow: hidden;
   pointer-events: none;
 }
 
-.moving-grid {
+.streak {
   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image:
-    linear-gradient(to right, rgba(0, 180, 255, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 180, 255, 0.25) 1px, transparent 1px);
-  background-size: 50px 50px;
-  transform: rotateX(70deg);
-  animation: moveGrid 3s linear infinite;
+  top: var(--top);
+  left: -30%;
+  width: 220px;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 200, 255, 0.9),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(0, 180, 255, 0.6);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: streak-move var(--duration) linear var(--delay) infinite;
 }
 
-.floating-light {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(0, 160, 255, 0.45), transparent 70%);
-  filter: blur(60px);
-  transform: translate(-50%, -50%);
-  animation: pulseGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes moveGrid {
+@keyframes streak-move {
   0% {
-    background-position: 0 0;
+    transform: rotate(30deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
   }
   100% {
-    background-position: 0 50px;
+    transform: rotate(30deg) translateX(180vw);
+    opacity: 0;
   }
 }
 
-@keyframes pulseGlow {
-  0% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(0.8);
+@media (prefers-reduced-motion: reduce) {
+  .streak {
+    animation: none;
+    display: none;
   }
-  100% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.glow-static {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 40% at 50% 50%,
+    rgba(0, 160, 255, 0.18),
+    transparent 70%
+  );
+}
+
+.scan-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 180, 255, 0.7),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
+  will-change: transform;
+  animation: scan 6s linear infinite;
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-beam {
+    animation: none;
+    display: none;
   }
 }
 </style>
