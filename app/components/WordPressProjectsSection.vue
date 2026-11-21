@@ -130,7 +130,6 @@ const sites = ref([
   pointer-events: none;
 }
 
-/* گرید متحرک نئونی */
 .moving-grid {
   position: absolute;
   width: 200%;
@@ -145,7 +144,6 @@ const sites = ref([
   animation: moveGrid 3s linear infinite;
 }
 
-/* هاله نوری ضربان‌دار */
 .floating-light {
   position: absolute;
   top: 50%;

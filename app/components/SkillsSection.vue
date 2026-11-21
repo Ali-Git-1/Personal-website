@@ -70,12 +70,12 @@ const skills = ref([
   { name: "Git & GitHub", icon: "🐙" },
   {
     name: "REST APIs & Axios",
-    icon: "⚡", // یا 🔄
+    icon: "⚡", 
     color: "text-sky-400",
   },
   {
     name: "UI/UX Design",
-    icon: "💫", // یا 📐
+    icon: "💫", 
     color: "text-pink-400",
   },
   {
@@ -83,11 +83,10 @@ const skills = ref([
     icon: "🌐",
     color: "text-blue-500",
   },
-  // اضافه کردن به لیست مهارت‌ها:
   {
     name: "Android App Dev",
     description: "ساخت انواع اپلیکیشن با Android Studio",
-    icon: "📱", // یا 🤖
+    icon: "📱", 
     color: "text-emerald-400",
   },
   {
@@ -98,14 +97,13 @@ const skills = ref([
   },
   {
     name: "SEO & Meta Tags",
-    icon: "🔍", // یا 📈
+    icon: "🔍", 
     color: "text-amber-400",
   },
 ]);
 </script>
 
 <style>
-/* انیمیشن هاله‌های نوری */
 @keyframes blob {
   0%,
   100% {
@@ -120,14 +118,13 @@ const skills = ref([
 }
 
 .animate-blob {
-  animation: blob 5s infinite ease-in-out; /* تایم رو کم کردیم تا حرکتش سریع‌تر حس بشه */
-  will-change: transform; /* این دستور باعث میشه مرورگر بدونه این قراره حرکت کنه و به GPU میسپارتش */
+  animation: blob 5s infinite ease-in-out; 
+  will-change: transform; 
 }
 .animation-delay-2000 {
   animation-delay: 2s;
 }
 
-/* انیمیشن شناور کاراکترها */
 @keyframes float {
   0%,
   100% {
@@ -138,12 +135,12 @@ const skills = ref([
   }
 }
 .float-slow {
-  animation: float 3s ease-in-out infinite; /* سریع‌تر */
+  animation: float 3s ease-in-out infinite; 
   will-change: transform;
 }
 
 .float-medium {
-  animation: float 3s ease-in-out infinite 0.5s; /* سریع‌تر */
+  animation: float 3s ease-in-out infinite 0.5s; 
   will-change: transform;
 }
 </style>

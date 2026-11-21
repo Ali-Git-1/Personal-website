@@ -5,7 +5,6 @@
   >
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-        <!-- ستون اول: معرفی -->
         <div class="space-y-4">
           <div
             class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
@@ -18,7 +17,6 @@
           </p>
         </div>
 
-        <!-- ستون دوم: لینک‌های سریع -->
         <div>
           <h4 class="text-white font-bold mb-4">دسترسی سریع</h4>
           <ul class="space-y-3 text-slate-500 text-sm">
@@ -53,12 +51,10 @@
           </ul>
         </div>
 
-        <!-- ستون سوم: ارتباط حرفه‌ای -->
         <div>
           <h4 class="text-white font-bold mb-4">ارتباط با من</h4>
           <p class="text-slate-400 text-xs mb-4">{{ "09178975867" }}</p>
           <div class="flex flex-wrap gap-3">
-            <!-- GitHub -->
             <a
               href="https://github.com/Ali-Git-1"
               target="_blank"
@@ -72,7 +68,6 @@
               </svg>
             </a>
 
-            <!-- WhatsApp (چت مستقیم) -->
             <a
               href="https://wa.me/989178975867"
               target="_blank"
@@ -86,7 +81,6 @@
               </svg>
             </a>
 
-            <!-- Telegram (چت مستقیم با شماره) -->
             <a
               href="https://t.me/+989178975867"
               target="_blank"
@@ -101,7 +95,6 @@
             </a>
           </div>
           <div class="flex flex-wrap gap-3 mt-4">
-            <!-- Eitaa (چت مستقیم با شماره) -->
             <a
               href="https://eitaa.com/09178975867"
               target="_blank"
@@ -115,7 +108,6 @@
               />
             </a>
 
-            <!-- Rubika (چت مستقیم با شماره) -->
             <a
               href="https://rubika.ir/09178975867"
               target="_blank"
@@ -135,7 +127,7 @@
       <div class="border-t border-slate-900 pt-8 text-center">
         <p class="text-slate-600 text-sm">
           © {{ new Date().getFullYear() }} - تمامی حقوق محفوظ است. طراحی و توسعه
-          با Nuxt 3 & Tailwind
+          با Nuxt 3
         </p>
       </div>
     </div>

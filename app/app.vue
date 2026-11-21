@@ -258,7 +258,6 @@ const isLoading = ref(true);
 const progress = ref(0);
 const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
 
-// -----------------------------
 
 onMounted(() => {
   const steps = [

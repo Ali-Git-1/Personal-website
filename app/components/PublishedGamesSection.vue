@@ -175,7 +175,6 @@ const games = ref([
 </script>
 
 <style scoped>
-/* 🎮 Cyber Grid & Scanline Effects */
 
 .scanlines {
   background: linear-gradient(
@@ -186,7 +185,6 @@ const games = ref([
   background-size: 100% 4px;
 }
 
-/* 🕹️ Pulsing Gaming Orbs */
 .game-orb {
   position: absolute;
   border-radius: 50%;
@@ -234,7 +232,6 @@ const games = ref([
   animation: cyberPulse 7s ease-in-out infinite alternate-reverse;
 }
 
-/* ⚡ Keyframes for Smooth Animation */
 @keyframes gridSlide {
   0% {
     background-position: 0 0;

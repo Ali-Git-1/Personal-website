@@ -1,5 +1,4 @@
 <script setup>
-// لیست برنامه‌ها (بعداً که اپ‌ها رو بیلد کردی، فقط اطلاعات همین آرایه رو ویرایش کن)
 const apps = [
   {
     id: 1,
@@ -20,8 +19,8 @@ const apps = [
     image: "/images/apps/calculator.png",
     repoUrl: "https://github.com/Ali-Git-1/App-Calculator",
     downloadUrl: "/downloads/calculator.apk",
-    marketUrl: "#", // به محض تأیید مایکت، لینک مستقیم رو اینجا بذار
-    isPublished: false, // بعد از انتشار توی مایکت true کن
+    marketUrl: "#", 
+    isPublished: false, 
   },
 ];
 </script>
@@ -216,14 +215,12 @@ const apps = [
 </template>
 
 <style scoped>
-/* کانتینر اصلی بخش */
 .apps-section {
   background-color: #0b0f19;
   position: relative;
 }
 
 
-/* گوی‌های نوری گرادیانت */
 .glow-orb {
   position: absolute;
   border-radius: 50%;
@@ -233,7 +230,6 @@ const apps = [
   pointer-events: none;
 }
 
-/* گوی آبی اول */
 .orb-1 {
   width: 350px;
   height: 350px;
@@ -242,7 +238,6 @@ const apps = [
   left: 5%;
 }
 
-/* گوی بنفش دوم */
 .orb-2 {
   width: 300px;
   height: 300px;
@@ -251,7 +246,6 @@ const apps = [
   right: 5%;
 }
 
-/* انیمیشن شناور بودن نرم */
 @keyframes floatOrb {
   0% {
     transform: translate(0, 0) scale(1);
@@ -266,7 +260,6 @@ const apps = [
     transform: translate(40px, -30px) scale(1.15);
   }
 }
-/* والدين که بچه‌ها توش شناور باشن */
 .bg-elements {
   position: absolute;
   inset: 0;

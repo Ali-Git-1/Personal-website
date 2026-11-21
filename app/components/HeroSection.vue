@@ -122,7 +122,6 @@ useSeoMeta({
   ogDescription: "توسعه‌دهنده فرانت‌اند مسلط به اکوسیستم Vue و جاوااسکریپت",
 });
 
-// --- بخش جدید برای تایپ‌رایتر ---
 const dynamicText = ref("");
 const roles = [
   "توسعه‌دهنده وب با تمرکز بر رابط‌های کاربری چشم‌نواز",
@@ -149,7 +148,7 @@ const typeWriter = () => {
   let typeSpeed = isDeleting ? 30 : 60;
 
   if (!isDeleting && charIndex === currentRole.length) {
-    typeSpeed = 2000; // مکث در انتهای جمله برای خوانده شدن
+    typeSpeed = 2000;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
@@ -219,8 +218,8 @@ function startCodeRain(canvas) {
 
   function createColumn() {
     return {
-      y: -Math.random() * height, // شروع از بالای صفحه با تاخیر تصادفی
-      speed: 70 + Math.random() * 90, // پیکسل در ثانیه
+      y: -Math.random() * height,
+      speed: 70 + Math.random() * 90,
       cell: 0,
       chars: Array.from({ length: trailLength }, randomSymbol),
     };
@@ -255,7 +254,7 @@ function startCodeRain(canvas) {
 
   function draw(time) {
     frameId = requestAnimationFrame(draw);
-    const dt = Math.min((time - lastTime) / 1000, 0.05); // ثانیه
+    const dt = Math.min((time - lastTime) / 1000, 0.05);
     lastTime = time;
 
     ctx.clearRect(0, 0, width, height);
@@ -263,7 +262,6 @@ function startCodeRain(canvas) {
     columns.forEach((col, i) => {
       col.y += col.speed * dt;
 
-      // وقتی سر ستون وارد خانهٔ جدید شد، یک حرف جدید اضافه کن
       const cell = Math.floor(col.y / fontSize);
       if (cell !== col.cell) {
         col.chars.unshift(randomSymbol());
@@ -279,7 +277,6 @@ function startCodeRain(canvas) {
         ctx.fillText(col.chars[k], i * fontSize, y);
       }
 
-      // ستون که کامل از پایین رد شد، دوباره از بالا شروع کن
       if (col.y - trailLength * fontSize > height) {
         Object.assign(col, createColumn(), {
           y: -Math.random() * height * 0.5,
@@ -319,7 +316,6 @@ onMounted(() => {
 </script>
 
 <style>
-/* هاله نوری شناور - حرکت واضح‌تر و بزرگ‌تر */
 @keyframes blob-float {
   0%,
   100% {
@@ -342,7 +338,7 @@ onMounted(() => {
   animation-delay: 4s;
 }
 
-/* خط اسکن نورانی متحرک (حس ترمینال و مانیتور کدنویسی) */
+
 @keyframes scanline {
   0% {
     top: -10%;
@@ -372,7 +368,7 @@ onMounted(() => {
   );
   animation: scanline 8s linear infinite;
 }
-/* ===== افکت گلیچ برای اسم ===== */
+
 .glitch-wrapper {
   position: relative;
   display: inline-block;
@@ -391,20 +387,20 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* لایه قرمز/صورتی - جابجایی افقی */
+
 .glitch-wrapper::before {
   color: #f43f5e;
   animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
 
-/* لایه فیروزه‌ای - جابجایی مخالف */
+
 .glitch-wrapper::after {
   color: #22d3ee;
   animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
 }
 
 .glitch-text {
-  color: #34d399; /* سبز هماهنگ با تم سایت */
+  color: #34d399; 
   text-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
 }
 
