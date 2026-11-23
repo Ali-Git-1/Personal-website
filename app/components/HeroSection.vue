@@ -19,14 +19,8 @@
       class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
     >
       <div class="text-right">
-        <span
-          class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-        >
-          آماده برای پروژه‌های جدید
-        </span>
-
         <p
-          class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
+          class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
         >
           <span
             class="glitch-wrapper block mb-3"
@@ -43,11 +37,37 @@
           <span
             class="absolute right-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400"
           ></span>
+          <div class="mb-6 flex flex-col items-center">
+            <div
+              class="animate-float-slow rounded-2xl bg-white/5 p-1.5 shadow-2xl shadow-emerald-500/20 ring-1 ring-white/10"
+            >
+              <img
+                src="/me.jpg"
+                alt="My Profile"
+                class="w-32 h-32 sm:w-40 sm:h-40 rounded-xl object-cover object-top"
+                @error="onImageError"
+                v-if="!imageError"
+              />
+            </div>
+            <span
+              class="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-slate-900/60 px-4 py-1.5 text-sm text-emerald-300"
+            >
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"
+                ></span>
+              </span>
+              آماده برای همکاری
+            </span>
+          </div>
 
           <h1
-            class="mt-6 text-2xl sm:text-3xl lg:text-4xl font-black text-white sm:whitespace-nowrap"
+            class="text-base min-[360px]:text-lg sm:text-4xl lg:text-4xl font-black text-white whitespace-nowrap sm:whitespace-normal"
           >
-            سلام، من علی هستم؛
+            سلام، علی هستم؛
             <span
               class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
             >
@@ -55,7 +75,7 @@
             </span>
           </h1>
 
-          <p class="mt-6 text-lg text-slate-400 leading-loose max-w-xl">
+          <p class="mt-6 text-base text-slate-400 leading-loose max-w-xl">
             من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
             جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند.
             تمرکز اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt
@@ -82,45 +102,6 @@
           >
             ارتباط با من
           </a>
-        </div>
-      </div>
-
-      <div class="flex justify-center">
-        <div class="relative group">
-          <div
-            class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-40 blur-xl group-hover:opacity-75 transition duration-500"
-          ></div>
-
-          <div
-            class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-3xl overflow-hidden bg-slate-900 border border-emerald-500/30 shadow-[0_0_60px_rgba(16,185,129,0.25)] flex items-center justify-center"
-          >
-            <img
-              src="/me.jpg"
-              alt="My Profile"
-              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
-              @error="onImageError"
-              v-if="!imageError"
-            />
-
-            <div v-else class="text-center p-6">
-              <div
-                class="w-24 h-24 mx-auto rounded-full bg-slate-800 border-2 border-dashed border-slate-600 flex items-center justify-center text-3xl mb-4 text-emerald-400"
-              >
-                👨‍💻
-              </div>
-              <p class="text-xs text-slate-400">
-                تصویرت را با نام
-                <code class="text-emerald-400 bg-slate-800 px-1 py-0.5 rounded"
-                  >me.jpg</code
-                >
-                داخل پوشه
-                <code class="text-cyan-400 bg-slate-800 px-1 py-0.5 rounded"
-                  >public</code
-                >
-                قرار بده.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -297,6 +278,26 @@ onMounted(() => {
 </script>
 
 <style>
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow {
+    animation: none;
+  }
+}
+
 @keyframes blob-float {
   0%,
   100% {
