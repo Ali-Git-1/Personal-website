@@ -6,103 +6,68 @@
       aria-hidden="true"
     ></canvas>
 
-    <div
-      class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none"
-    ></div>
-
     <div class="scan-line pointer-events-none"></div>
 
     <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.08),transparent_50%)]"
+      class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none"
     ></div>
     <div
-      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+      class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 sm:px-6 lg:grid-cols-[320px_1fr] lg:grid-rows-[auto_auto_1fr] lg:px-8"
     >
-      <div class="text-right">
-        <p
-          class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
+      <AboutProfileCard
+        class="order-3 lg:order-none lg:col-start-1 lg:row-span-3 lg:row-start-1"
+      />
+
+      <p
+        class="order-1 text-right text-3xl sm:text-4xl lg:order-none lg:col-start-2 lg:row-start-1 lg:text-5xl font-black text-white leading-tight"
+      >
+        <span class="glitch-wrapper block" dir="ltr" data-text="Ali Arabpour">
+          <span class="glitch-text text-emerald-400">Ali Arabpour</span>
+        </span>
+      </p>
+
+      <div
+        class="relative rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-emerald-500/5 order-2 text-right lg:order-none lg:col-start-2 lg:row-start-2"
+      >
+        <h1
+          class="text-base min-[360px]:text-lg sm:text-4xl lg:text-4xl font-black text-white whitespace-nowrap sm:whitespace-normal"
         >
+          سلام، علی هستم؛
           <span
-            class="glitch-wrapper block mb-3"
-            dir="ltr"
-            data-text="Ali Arabpour"
+            class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            <span class="glitch-text text-emerald-400">Ali Arabpour</span>
+            توسعه‌دهنده وب
           </span>
+        </h1>
+
+        <p class="mt-6 text-base text-slate-400 leading-loose max-w-xl">
+          من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
+          جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند. تمرکز
+          اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt است و
+          تلاش می‌کنم با استفاده از ابزارهایی مانند Tailwind CSS، رابط‌هایی
+          واکنش‌گرا، منظم و قابل نگهداری ایجاد کنم. در مسیر توسعه مهارت‌هایم،
+          صرفاً به پیاده‌سازی ظاهر صفحات اکتفا نمی‌کنم؛ بلکه سعی دارم ساختار
+          کدها، نحوه ارتباط بخش‌های مختلف برنامه و دلیل استفاده از هر ابزار را
+          به‌خوبی درک کنم. یادگیری مستمر، حل مسئله و بهبود کیفیت پروژه‌ها از
+          مهم‌ترین اولویت‌های من در مسیر حرفه‌ای برنامه‌نویسی هستند.
         </p>
+      </div>
 
-        <div
-          class="mt-6 relative max-w-xl rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-emerald-500/5"
+      <div
+        class="order-4 flex flex-wrap justify-start gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
+      >
+        <a
+          href="#projects"
+          class="px-6 py-3 bg-gradient-to-l from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300"
         >
-          <span
-            class="absolute right-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400"
-          ></span>
-          <div class="mb-6 flex flex-col items-center">
-            <div
-              class="animate-float-slow rounded-2xl bg-white/5 p-1.5 shadow-2xl shadow-emerald-500/20 ring-1 ring-white/10"
-            >
-              <img
-                src="/me.jpg"
-                alt="My Profile"
-                class="w-32 h-32 sm:w-40 sm:h-40 rounded-xl object-cover object-top"
-                @error="onImageError"
-                v-if="!imageError"
-              />
-            </div>
-            <span
-              class="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-slate-900/60 px-4 py-1.5 text-sm text-emerald-300"
-            >
-              <span class="relative flex h-2 w-2">
-                <span
-                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
-                ></span>
-                <span
-                  class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"
-                ></span>
-              </span>
-              آماده برای همکاری
-            </span>
-          </div>
-
-          <h1
-            class="text-base min-[360px]:text-lg sm:text-4xl lg:text-4xl font-black text-white whitespace-nowrap sm:whitespace-normal"
-          >
-            سلام، علی هستم؛
-            <span
-              class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-            >
-              توسعه‌دهنده وب
-            </span>
-          </h1>
-
-          <p class="mt-6 text-base text-slate-400 leading-loose max-w-xl">
-            من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
-            جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند.
-            تمرکز اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt
-            است و تلاش می‌کنم با استفاده از ابزارهایی مانند Tailwind CSS،
-            رابط‌هایی واکنش‌گرا، منظم و قابل نگهداری ایجاد کنم. در مسیر توسعه
-            مهارت‌هایم، صرفاً به پیاده‌سازی ظاهر صفحات اکتفا نمی‌کنم؛ بلکه سعی
-            دارم ساختار کدها، نحوه ارتباط بخش‌های مختلف برنامه و دلیل استفاده از
-            هر ابزار را به‌خوبی درک کنم. یادگیری مستمر، حل مسئله و بهبود کیفیت
-            پروژه‌ها از مهم‌ترین اولویت‌های من در مسیر حرفه‌ای برنامه‌نویسی
-            هستند.
-          </p>
-        </div>
-
-        <div class="mt-10 flex flex-wrap gap-4 justify-start">
-          <a
-            href="#projects"
-            class="px-6 py-3 bg-gradient-to-l from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300"
-          >
-            مشاهده نمونه‌کارها
-          </a>
-          <a
-            href="#contact"
-            class="px-6 py-3 bg-transparent hover:bg-emerald-500/10 text-emerald-300 font-semibold rounded-xl border border-emerald-500/40 hover:border-emerald-400 transition-all duration-300"
-          >
-            ارتباط با من
-          </a>
-        </div>
+          مشاهده نمونه‌کارها
+        </a>
+        <a
+          href="#contact"
+          class="px-6 py-3 bg-transparent hover:bg-emerald-500/10 text-emerald-300 font-semibold rounded-xl border border-emerald-500/40 hover:border-emerald-400 transition-all duration-300"
+        >
+          ارتباط با من
+        </a>
       </div>
     </div>
   </section>
