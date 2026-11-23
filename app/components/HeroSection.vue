@@ -24,7 +24,8 @@
         >
           آماده برای پروژه‌های جدید
         </span>
-        <h1
+
+        <p
           class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
         >
           <span
@@ -34,33 +35,50 @@
           >
             <span class="glitch-text text-emerald-400">Ali Arabpour</span>
           </span>
-        </h1>
-        <h1
-          class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
-        >
-          <span>سلام، من </span>
-          <span
-            class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-          >
-            برنامه‌نویس فرانت‌اند
-          </span>
-          <span> هستم</span>
-        </h1>
-
-        <p class="mt-6 text-lg text-slate-400 leading-relaxed h-16">
-          {{ dynamicText }}<span class="animate-pulse text-emerald-400">|</span>
         </p>
+
+        <div
+          class="mt-6 relative max-w-xl rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-emerald-500/5"
+        >
+          <span
+            class="absolute right-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400"
+          ></span>
+
+          <h1
+            class="mt-6 text-2xl sm:text-3xl lg:text-4xl font-black text-white sm:whitespace-nowrap"
+          >
+            سلام، من علی هستم؛
+            <span
+              class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+            >
+              توسعه‌دهنده وب
+            </span>
+          </h1>
+
+          <p class="mt-6 text-lg text-slate-400 leading-loose max-w-xl">
+            من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
+            جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند.
+            تمرکز اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt
+            است و تلاش می‌کنم با استفاده از ابزارهایی مانند Tailwind CSS،
+            رابط‌هایی واکنش‌گرا، منظم و قابل نگهداری ایجاد کنم. در مسیر توسعه
+            مهارت‌هایم، صرفاً به پیاده‌سازی ظاهر صفحات اکتفا نمی‌کنم؛ بلکه سعی
+            دارم ساختار کدها، نحوه ارتباط بخش‌های مختلف برنامه و دلیل استفاده از
+            هر ابزار را به‌خوبی درک کنم. یادگیری مستمر، حل مسئله و بهبود کیفیت
+            پروژه‌ها از مهم‌ترین اولویت‌های من در مسیر حرفه‌ای برنامه‌نویسی
+            هستند.
+          </p>
+        </div>
 
         <div class="mt-10 flex flex-wrap gap-4 justify-start">
           <a
             href="#projects"
-            class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-lg transition-all duration-300 shadow-lg shadow-emerald-500/10"
+            class="px-6 py-3 bg-gradient-to-l from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300"
           >
             مشاهده نمونه‌کارها
           </a>
           <a
             href="#contact"
-            class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 transition-all duration-300"
+            class="px-6 py-3 bg-transparent hover:bg-emerald-500/10 text-emerald-300 font-semibold rounded-xl border border-emerald-500/40 hover:border-emerald-400 transition-all duration-300"
           >
             ارتباط با من
           </a>
@@ -122,42 +140,6 @@ useSeoMeta({
   ogDescription: "توسعه‌دهنده فرانت‌اند مسلط به اکوسیستم Vue و جاوااسکریپت",
 });
 
-const dynamicText = ref("");
-const roles = [
-  "توسعه‌دهنده وب با تمرکز بر رابط‌های کاربری چشم‌نواز",
-  "برنامه‌نویس متخصص با استفاده از Vue 3 و Nuxt",
-  " علاقه‌مند به مشارکت تیمی و دنیای متن‌باز (GitHub)",
-  "عاشق کدهای بهینه و با کارایی بالا",
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-const typeWriter = () => {
-  const currentRole = roles[roleIndex];
-
-  if (isDeleting) {
-    dynamicText.value = currentRole.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    dynamicText.value = currentRole.substring(0, charIndex + 1);
-    charIndex++;
-  }
-
-  let typeSpeed = isDeleting ? 30 : 60;
-
-  if (!isDeleting && charIndex === currentRole.length) {
-    typeSpeed = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    typeSpeed = 500;
-  }
-
-  setTimeout(typeWriter, typeSpeed);
-};
 const codeRainCanvas = ref(null);
 let stopCodeRain = null;
 
@@ -301,7 +283,6 @@ const onImageError = () => {
   imageError.value = true;
 };
 onMounted(() => {
-  typeWriter();
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
@@ -337,7 +318,6 @@ onMounted(() => {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
-
 
 @keyframes scanline {
   0% {
@@ -387,12 +367,10 @@ onMounted(() => {
   opacity: 0;
 }
 
-
 .glitch-wrapper::before {
   color: #f43f5e;
   animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
-
 
 .glitch-wrapper::after {
   color: #22d3ee;
@@ -400,7 +378,7 @@ onMounted(() => {
 }
 
 .glitch-text {
-  color: #34d399; 
+  color: #34d399;
   text-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
 }
 
