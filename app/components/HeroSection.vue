@@ -54,20 +54,123 @@
       </div>
 
       <div
-        class="order-4 flex flex-wrap justify-center gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
+        class="order-4 flex flex-col gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
       >
-        <a
-          href="#projects"
-          class="px-6 py-3 bg-gradient-to-l from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300"
+        <!-- نوار آمار -->
+        <div
+          class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cyan-400/20 bg-cyan-400/15 sm:grid-cols-4"
+          role="tablist"
         >
-          مشاهده نمونه‌کارها
-        </a>
-        <a
-          href="#contact"
-          class="px-6 py-3 bg-transparent hover:bg-emerald-500/10 text-emerald-300 font-semibold rounded-xl border border-emerald-500/40 hover:border-emerald-400 transition-all duration-300"
-        >
-          ارتباط با من
-        </a>
+          <button
+            v-for="(stat, index) in stats"
+            :key="stat.label"
+            type="button"
+            role="tab"
+            :aria-selected="selectedIndex === index"
+            :class="[
+              'group flex items-center gap-3 p-4 text-right transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60',
+              selectedIndex === index
+                ? 'bg-cyan-500/15'
+                : 'bg-slate-950/90 hover:bg-cyan-500/5',
+            ]"
+            @click="selectStat(index)"
+          >
+            <span
+              :class="[
+                'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-transform duration-300 group-hover:scale-110',
+                selectedIndex === index
+                  ? 'border-cyan-300/50 bg-cyan-400/20 text-cyan-200'
+                  : 'border-white/10 bg-slate-900 text-cyan-300',
+              ]"
+            >
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path :d="stat.icon" />
+              </svg>
+            </span>
+            <span class="flex flex-col">
+              <span class="text-lg font-black text-white">{{
+                stat.value
+              }}</span>
+              <span class="text-xs text-slate-400">{{ stat.label }}</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- پنل جزئیات -->
+        <Transition name="stat-fade" mode="out-in">
+          <div
+            :key="selectedIndex"
+            class="rounded-2xl border border-cyan-400/15 bg-slate-950/70 p-4 text-right backdrop-blur-sm"
+          >
+            <p class="text-sm leading-7 text-slate-300">
+              {{ selectedStat.detail }}
+            </p>
+
+            <div v-if="selectedStat.progress !== null" class="mt-3">
+              <div
+                class="mb-1 flex items-center justify-between text-xs text-slate-400"
+              >
+                <span>{{ selectedStat.progress }}٪</span>
+                <span>پیشرفت مسیر</span>
+              </div>
+              <div class="h-2 overflow-hidden rounded-full bg-slate-800">
+                <div
+                  class="h-full rounded-full bg-gradient-to-l from-cyan-400 to-emerald-400 transition-all duration-700"
+                  :style="{ width: selectedStat.progress + '%' }"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mt-3 flex flex-wrap justify-start gap-2">
+              <span
+                v-for="tag in selectedStat.tags"
+                :key="tag"
+                dir="ltr"
+                class="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-xs text-cyan-200"
+              >
+                {{ tag }}
+              </span>
+            </div>
+          </div>
+        </Transition>
+
+        <!-- دکمه‌ها -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#projects"
+            class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-l from-cyan-400 to-emerald-400 px-7 py-3 font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cyan-400/30"
+          >
+            مشاهده نمونه‌کارها
+            <svg
+              class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14 M11 18l-6-6 6-6" />
+            </svg>
+          </a>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 px-4 py-3 font-semibold text-cyan-300 underline-offset-8 transition-colors duration-300 hover:text-cyan-200 hover:underline"
+          >
+            ارتباط با من
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -88,6 +191,49 @@ useSeoMeta({
 
 const codeRainCanvas = ref(null);
 let stopCodeRain = null;
+
+const selectedIndex = ref(1);
+
+const stats = [
+  {
+    value: "Junior",
+    label: "Front-End",
+    icon: "M16 18l6-6-6-6 M8 6l-6 6 6 6",
+    detail: "تمرکز روی Vue و Nuxt و ساخت رابط‌های تعاملی",
+    tags: ["Vue", "Nuxt", "Tailwind"],
+    progress: null,
+  },
+  {
+    value: "Full-Stack",
+    label: "در حال یادگیری",
+    icon: "M3 5h18v6H3z M3 13h18v6H3z M7 8h.01 M7 16h.01",
+    detail: "در حال یادگیری Node.js و طراحی دیتابیس",
+    tags: ["Node.js", "API", "SQL"],
+    progress: 35,
+  },
+  {
+    value: "5+",
+    label: "پروژه تکمیل‌شده",
+    icon: "M3 7h18v12H3z M9 7V5h6v2 M3 12h18",
+    detail: "پروژه‌های شخصی و کاری با تمرکز بر کیفیت کد",
+    tags: ["Portfolio", "Landing", "WordPress"],
+    progress: null,
+  },
+  {
+    value: "2+",
+    label: "سال فعالیت",
+    icon: "M12 7v5l3 2 M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z",
+    detail: "از شروع برنامه‌نویسی تا امروز",
+    tags: ["HTML", "CSS", "JavaScript"],
+    progress: null,
+  },
+];
+
+const selectedStat = computed(() => stats[selectedIndex.value]);
+
+const selectStat = (index) => {
+  selectedIndex.value = index;
+};
 
 function startCodeRain(canvas) {
   const ctx = canvas.getContext("2d");
@@ -243,6 +389,18 @@ onMounted(() => {
 </script>
 
 <style>
+.stat-fade-enter-active,
+.stat-fade-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.stat-fade-enter-from,
+.stat-fade-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
 @keyframes float-slow {
   0%,
   100% {
