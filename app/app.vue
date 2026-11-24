@@ -95,17 +95,6 @@
               >تماس با من</a
             >
           </nav>
-          <button
-            class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40"
-          >
-            <a
-              href="/Personal-website/Ali-Arabpour-Resume.pdf"
-              target="_blank"
-              download
-            >
-              دریافت رزومه
-            </a>
-          </button>
         </div>
       </header>
 
@@ -257,7 +246,6 @@ import WordPressProjectsSection from "./components/WordPressProjectsSection.vue"
 const isLoading = ref(true);
 const progress = ref(0);
 const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
-
 
 onMounted(() => {
   const steps = [
