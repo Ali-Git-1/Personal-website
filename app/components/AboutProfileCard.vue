@@ -48,6 +48,11 @@
           </svg>
           <span>شیراز، ایران</span>
         </p>
+        <p
+          class="mt-3 flex w-full flex-row items-center justify-center gap-2 text-sm text-slate-400"
+        >
+          تاریخ تولد : 21/12/1385
+        </p>
       </div>
 
       <ul
@@ -55,16 +60,9 @@
       >
         <li class="flex flex-row items-center justify-center gap-2">
           <svg class="icon text-emerald-300" viewBox="0 0 24 24">
-            <path :d="icons.shield" />
-          </svg>
-          <span>معافیت موقت سربازی</span>
-        </li>
-
-        <li class="flex flex-row items-center justify-center gap-2">
-          <svg class="icon text-emerald-300" viewBox="0 0 24 24">
             <path :d="icons.palette" />
           </svg>
-          <span>دیپلم رشته گرافیک</span>
+          <span>دیپلم رشته گرافیک رایانه</span>
         </li>
 
         <li class="flex flex-row items-center justify-center gap-2">
@@ -72,6 +70,13 @@
             <path :d="icons.cap" />
           </svg>
           <span>کاردانی نرم‌افزار کامپیوتر</span>
+        </li>
+
+        <li class="flex flex-row items-center justify-center gap-2">
+          <svg class="icon text-emerald-300" viewBox="0 0 24 24">
+            <path :d="icons.shield" />
+          </svg>
+          <span>معافیت موقت سربازی</span>
         </li>
       </ul>
 

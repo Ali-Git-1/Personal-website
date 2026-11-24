@@ -27,7 +27,7 @@
       </p>
 
       <div
-        class="relative rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-emerald-500/5 order-2 text-right lg:order-none lg:col-start-2 lg:row-start-2"
+        class="relative rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-emerald-500/5 order-2 text-center lg:order-none lg:col-start-2 lg:row-start-2"
       >
         <h1
           class="text-base min-[360px]:text-lg sm:text-4xl lg:text-4xl font-black text-white whitespace-nowrap sm:whitespace-normal"
@@ -40,7 +40,7 @@
           </span>
         </h1>
 
-        <p class="mt-6 text-base text-slate-400 leading-loose max-w-xl">
+        <p class="mt-6 mx-auto text-base text-slate-400 leading-loose max-w-xl">
           من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
           جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند. تمرکز
           اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt است و
@@ -54,7 +54,7 @@
       </div>
 
       <div
-        class="order-4 flex flex-wrap justify-start gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
+        class="order-4 flex flex-wrap justify-center gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
       >
         <a
           href="#projects"
