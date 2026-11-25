@@ -44,58 +44,152 @@
     <div
       class="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-900"
     >
-      <header
-        class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800"
-      >
+      <header class="fixed inset-x-0 top-5 z-50 px-3 sm:px-6">
         <div
-          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+          class="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-2xl border border-cyan-400/20 bg-slate-950/70 px-3 py-2 shadow-lg shadow-cyan-500/5 backdrop-blur-md"
         >
-          <div
-            class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+          <a
+            href="#about"
+            dir="ltr"
+            class="text-lg font-extrabold tracking-tight"
+            @click.prevent="goTo('about')"
           >
-            &lt;NinjaCoder /&gt;
-          </div>
-          <nav
-            class="hidden md:flex space-x-8 space-x-reverse text-sm font-medium"
-          >
-            <a
-              href="#about"
-              class="text-slate-300 hover:text-emerald-400 transition-colors"
-              >درباره من</a
+            <span
+              class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+              >&lt;NinjaCoder /&gt;</span
             >
-            <a
-              href="#skills"
-              class="text-slate-300 hover:text-emerald-400 transition-colors"
-              >مهارت‌ها</a
-            >
-            <a
-              href="#published-apps"
-              class="text-slate-300 hover:text-emerald-400 transition-colors"
-              >برنامه‌ها</a
-            >
-            <a
-              href="#published-games"
-              class="text-slate-300 hover:text-purple-400 transition-colors"
-              >بازی‌ها</a
-            >
-            <a
-              href="#wordpress-projects"
-              class="text-slate-300 hover:text-sky-400 transition-colors"
-              >وردپرس</a
-            >
+          </a>
 
+          <nav class="hidden items-center gap-1 lg:flex">
             <a
-              href="#projects"
-              class="text-slate-300 hover:text-emerald-400 transition-colors"
-              >نمونه‌کارها</a
+              v-for="link in links"
+              :key="link.id"
+              :href="'#' + link.id"
+              :class="[
+                'flex items-center gap-2 rounded-xl px-2.5 py-2 text-sm transition-all duration-300',
+                activeId === link.id
+                  ? link.active + ' ring-1'
+                  : 'text-slate-400 hover:bg-white/5 hover:text-white',
+              ]"
+              @click.prevent="goTo(link.id)"
             >
-            <a
-              href="#contact"
-              class="text-slate-300 hover:text-emerald-400 transition-colors"
-              >تماس با من</a
-            >
+              <svg
+                class="hidden h-4 w-4 xl:block"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path :d="link.icon" />
+              </svg>
+              {{ lang === "fa" ? link.fa : link.en }}
+            </a>
           </nav>
+
+          <div class="flex items-center gap-2">
+            <div
+              class="flex overflow-hidden rounded-xl border border-white/10 text-xs font-bold"
+              dir="ltr"
+            >
+              <button
+                v-for="l in ['fa', 'en']"
+                :key="l"
+                type="button"
+                :class="[
+                  'px-3 py-2 uppercase transition-colors',
+                  lang === l
+                    ? 'bg-cyan-400 text-slate-950'
+                    : 'text-slate-400 hover:text-white',
+                ]"
+                @click="lang = l"
+              >
+                {{ l }}
+              </button>
+            </div>
+
+            <button
+              type="button"
+              class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-cyan-300 transition-colors hover:bg-white/5"
+              :aria-label="theme === 'dark' ? 'Light mode' : 'Dark mode'"
+              @click="theme = theme === 'dark' ? 'light' : 'dark'"
+            >
+              <svg
+                v-if="theme === 'dark'"
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+              </svg>
+              <svg
+                v-else
+                class="h-5 w-5 text-amber-300"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M12 2v2 M12 20v2 M4.9 4.9l1.4 1.4 M17.7 17.7l1.4 1.4 M2 12h2 M20 12h2 M4.9 19.1l1.4-1.4 M17.7 6.3l1.4-1.4"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-slate-300 lg:hidden"
+              aria-label="Menu"
+              @click="menuOpen = !menuOpen"
+            >
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path
+                  :d="
+                    menuOpen
+                      ? 'M6 6l12 12 M18 6 6 18'
+                      : 'M4 7h16 M4 12h16 M4 17h16'
+                  "
+                />
+              </svg>
+            </button>
+          </div>
         </div>
+
+        <nav
+          v-if="menuOpen"
+          class="mx-auto mt-2 flex max-w-6xl flex-col gap-1 rounded-2xl border border-cyan-400/20 bg-slate-950/90 p-2 backdrop-blur-md lg:hidden"
+        >
+          <a
+            v-for="link in links"
+            :key="link.id"
+            :href="'#' + link.id"
+            :class="[
+              'rounded-xl px-4 py-3 text-sm',
+              activeId === link.id ? link.active : 'text-slate-300',
+            ]"
+            @click.prevent="goTo(link.id)"
+          >
+            {{ lang === "fa" ? link.fa : link.en }}
+          </a>
+        </nav>
       </header>
 
       <HeroSection />
@@ -246,6 +340,129 @@ import WordPressProjectsSection from "./components/WordPressProjectsSection.vue"
 const isLoading = ref(true);
 const progress = ref(0);
 const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
+const lang = useState("lang", () => "fa");
+const theme = useState("theme", () => "dark");
+const menuOpen = ref(false);
+const activeId = ref("about");
+const navRef = ref(null);
+const pill = reactive({ x: 0, w: 0, show: false });
+
+const updatePill = () => {
+  const el = navRef.value?.querySelector(`[data-id="${activeId.value}"]`);
+  if (!el) return;
+  pill.x = el.offsetLeft;
+  pill.w = el.offsetWidth;
+  pill.show = true;
+};
+
+watch([activeId, lang], () => nextTick(updatePill));
+
+const links = [
+  {
+    id: "about",
+    fa: "درباره من",
+    en: "About",
+    active: "bg-emerald-400/15 text-emerald-300 ring-emerald-300/30",
+    icon: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M4 21a8 8 0 0 1 16 0",
+  },
+  {
+    id: "skills",
+    fa: "مهارت‌ها",
+    en: "Skills",
+    active: "bg-cyan-400/15 text-cyan-200 ring-cyan-300/30",
+    icon: "M9 3v2 M15 3v2 M9 19v2 M15 19v2 M3 9h2 M3 15h2 M19 9h2 M19 15h2 M7 7h10v10H7z",
+  },
+  {
+    id: "published-apps",
+    fa: "برنامه‌ها",
+    en: "Apps",
+    active: "bg-emerald-400/15 text-emerald-300 ring-emerald-300/30",
+    icon: "M7 2h10v20H7z M11 18h2",
+  },
+  {
+    id: "published-games",
+    fa: "بازی‌ها",
+    en: "Games",
+    active: "bg-purple-400/15 text-purple-300 ring-purple-300/30",
+    icon: "M6 12h4 M8 10v4 M15 13h.01 M18 11h.01 M7 7h10a5 5 0 0 1 5 5v1a3 3 0 0 1-5.4 1.8L15 13H9l-1.6 1.8A3 3 0 0 1 2 13v-1a5 5 0 0 1 5-5Z",
+  },
+  {
+    id: "wordpress-projects",
+    fa: "وردپرس",
+    en: "WordPress",
+    active: "bg-sky-400/15 text-sky-300 ring-sky-300/30",
+    icon: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z M3 12h18 M12 3a14 14 0 0 1 0 18 M12 3a14 14 0 0 0 0 18",
+  },
+  {
+    id: "projects",
+    fa: "نمونه‌کارها",
+    en: "Portfolio",
+    active: "bg-cyan-400/15 text-cyan-200 ring-cyan-300/30",
+    icon: "M3 7h18v12H3z M9 7V5h6v2",
+  },
+  {
+    id: "contact",
+    fa: "تماس با من",
+    en: "Contact",
+    active: "bg-emerald-400/15 text-emerald-300 ring-emerald-300/30",
+    icon: "M22 2 11 13 M22 2l-7 20-4-9-9-4 20-7Z",
+  },
+];
+
+let rafId;
+let locked = false;
+const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+const goTo = (id) => {
+  menuOpen.value = false;
+  const el = document.getElementById(id);
+  if (!el) return;
+  cancelAnimationFrame(rafId);
+  activeId.value = id;
+  locked = true;
+  const startY = window.scrollY;
+  const dist = el.getBoundingClientRect().top - 96;
+  const duration = Math.min(100, 50 + Math.abs(dist) * 0.25);
+  const t0 = performance.now();
+  const step = (now) => {
+    const p = Math.min((now - t0) / duration, 1);
+    window.scrollTo(0, startY + dist * ease(p));
+    if (p < 1) rafId = requestAnimationFrame(step);
+    else locked = false;
+  };
+  rafId = requestAnimationFrame(step);
+};
+
+let observer;
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      if (locked) return;
+      entries.forEach((e) => {
+        if (e.isIntersecting) activeId.value = e.target.id;
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+  links.forEach((l) => {
+    const el = document.getElementById(l.id);
+    if (el) observer.observe(el);
+  });
+  nextTick(updatePill);
+  window.addEventListener("resize", updatePill);
+});
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  window.removeEventListener("resize", updatePill);
+});
+
+useHead({
+  htmlAttrs: {
+    lang: computed(() => lang.value),
+    dir: computed(() => (lang.value === "fa" ? "rtl" : "ltr")),
+    "data-theme": computed(() => theme.value),
+  },
+});
 
 onMounted(() => {
   const steps = [

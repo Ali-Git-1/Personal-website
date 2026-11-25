@@ -19,7 +19,7 @@
       />
 
       <p
-        class="order-1 text-right text-3xl sm:text-4xl lg:order-none lg:col-start-2 lg:row-start-1 lg:text-5xl font-black text-white leading-tight"
+        class="order-1 text-center text-3xl sm:text-4xl lg:order-none lg:col-start-2 lg:row-start-1 lg:text-5xl font-black text-white leading-tight"
       >
         <span class="glitch-wrapper block" dir="ltr" data-text="Ali Arabpour">
           <span class="glitch-text text-emerald-400">Ali Arabpour</span>
