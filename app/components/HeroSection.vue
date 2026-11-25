@@ -32,43 +32,38 @@
         <h1
           class="text-base min-[360px]:text-lg sm:text-4xl lg:text-4xl font-black text-white whitespace-nowrap sm:whitespace-normal"
         >
-          سلام، علی هستم؛
+          {{ t("about.intro.greeting") }}
           <span
-            class="bg-gradient-to-l from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+            :class="[
+              'bg-clip-text text-transparent',
+              lang === 'fa' ? 'bg-gradient-to-l' : 'bg-gradient-to-r',
+              'from-emerald-400 to-cyan-400',
+            ]"
           >
-            توسعه‌دهنده وب
+            {{ t("about.intro.role") }}
           </span>
         </h1>
 
         <p class="mt-6 mx-auto text-base text-slate-400 leading-loose max-w-xl">
-          من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و
-          جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند. تمرکز
-          اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt است و
-          تلاش می‌کنم با استفاده از ابزارهایی مانند Tailwind CSS، رابط‌هایی
-          واکنش‌گرا، منظم و قابل نگهداری ایجاد کنم. در مسیر توسعه مهارت‌هایم،
-          صرفاً به پیاده‌سازی ظاهر صفحات اکتفا نمی‌کنم؛ بلکه سعی دارم ساختار
-          کدها، نحوه ارتباط بخش‌های مختلف برنامه و دلیل استفاده از هر ابزار را
-          به‌خوبی درک کنم. یادگیری مستمر، حل مسئله و بهبود کیفیت پروژه‌ها از
-          مهم‌ترین اولویت‌های من در مسیر حرفه‌ای برنامه‌نویسی هستند.
+          {{ t("about.intro.paragraph") }}
         </p>
       </div>
 
       <div
         class="order-4 flex flex-col gap-4 lg:order-none lg:col-start-2 lg:row-start-3"
       >
-        <!-- نوار آمار -->
         <div
           class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cyan-400/20 bg-cyan-400/15 sm:grid-cols-4"
           role="tablist"
         >
           <button
             v-for="(stat, index) in stats"
-            :key="stat.label"
+            :key="t(stat.labelKey)"
             type="button"
             role="tab"
             :aria-selected="selectedIndex === index"
             :class="[
-              'group flex items-center gap-3 p-4 text-right transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60',
+              'group flex items-center gap-3 p-4 text-start transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60',
               selectedIndex === index
                 ? 'bg-cyan-500/15'
                 : 'bg-slate-950/90 hover:bg-cyan-500/5',
@@ -100,19 +95,18 @@
               <span class="text-lg font-black text-white">{{
                 stat.value
               }}</span>
-              <span class="text-xs text-slate-400">{{ stat.label }}</span>
+              <span class="text-xs text-slate-400">{{ t(stat.labelKey) }}</span>
             </span>
           </button>
         </div>
 
-        <!-- پنل جزئیات -->
         <Transition name="stat-fade" mode="out-in">
           <div
             :key="selectedIndex"
-            class="rounded-2xl border border-cyan-400/15 bg-slate-950/70 p-4 text-right backdrop-blur-sm"
+            class="rounded-2xl border border-cyan-400/15 bg-slate-950/70 p-4 text-start backdrop-blur-sm"
           >
             <p class="text-sm leading-7 text-slate-300">
-              {{ selectedStat.detail }}
+              {{ t(selectedStat.detailKey) }}
             </p>
 
             <div v-if="selectedStat.progress !== null" class="mt-3">
@@ -120,7 +114,7 @@
                 class="mb-1 flex items-center justify-between text-xs text-slate-400"
               >
                 <span>{{ selectedStat.progress }}٪</span>
-                <span>پیشرفت مسیر</span>
+                <span>{{ t("about.progress") }}</span>
               </div>
               <div class="h-2 overflow-hidden rounded-full bg-slate-800">
                 <div
@@ -143,13 +137,12 @@
           </div>
         </Transition>
 
-        <!-- دکمه‌ها -->
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a
             href="#projects"
             class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-l from-cyan-400 to-emerald-400 px-7 py-3 font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cyan-400/30"
           >
-            مشاهده نمونه‌کارها
+            {{ t("about.cta.projects") }}
             <svg
               class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
               viewBox="0 0 24 24"
@@ -168,7 +161,7 @@
             href="#contact"
             class="inline-flex items-center gap-2 px-4 py-3 font-semibold text-cyan-300 underline-offset-8 transition-colors duration-300 hover:text-cyan-200 hover:underline"
           >
-            ارتباط با من
+            {{ t("about.cta.contact") }}
           </a>
         </div>
       </div>
@@ -180,6 +173,8 @@
 import { ref, onMounted } from "vue";
 
 const imageError = ref(false);
+const t = inject("t");
+const lang = inject("lang");
 
 useSeoMeta({
   title: "علی عرب پور | Ali Arabpour - برنامه‌نویس فرانت‌اند Vue و Nuxt",
@@ -194,42 +189,42 @@ let stopCodeRain = null;
 
 const selectedIndex = ref(1);
 
-const stats = [
+const stats = computed(() => [
   {
     value: "Junior",
-    label: "Front-End",
+    labelKey: "about.stats.frontend.label",
+    detailKey: "about.stats.frontend.detail",
     icon: "M16 18l6-6-6-6 M8 6l-6 6 6 6",
-    detail: "تمرکز روی Vue و Nuxt و ساخت رابط‌های تعاملی",
     tags: ["Vue", "Nuxt", "Tailwind"],
     progress: null,
   },
   {
     value: "Full-Stack",
-    label: "در حال یادگیری",
+    labelKey: "about.stats.fullstack.label",
+    detailKey: "about.stats.fullstack.detail",
     icon: "M3 5h18v6H3z M3 13h18v6H3z M7 8h.01 M7 16h.01",
-    detail: "در حال یادگیری Node.js و طراحی دیتابیس",
     tags: ["Node.js", "API", "SQL"],
     progress: 35,
   },
   {
     value: "5+",
-    label: "پروژه تکمیل‌شده",
+    labelKey: "about.stats.projects.label",
+    detailKey: "about.stats.projects.detail",
     icon: "M3 7h18v12H3z M9 7V5h6v2 M3 12h18",
-    detail: "پروژه‌های شخصی و کاری با تمرکز بر کیفیت کد",
     tags: ["Portfolio", "Landing", "WordPress"],
     progress: null,
   },
   {
     value: "2+",
-    label: "سال فعالیت",
+    labelKey: "about.stats.years.label",
+    detailKey: "about.stats.years.detail",
     icon: "M12 7v5l3 2 M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z",
-    detail: "از شروع برنامه‌نویسی تا امروز",
     tags: ["HTML", "CSS", "JavaScript"],
     progress: null,
   },
-];
+]);
 
-const selectedStat = computed(() => stats[selectedIndex.value]);
+const selectedStat = computed(() => stats.value[selectedIndex.value]);
 
 const selectStat = (index) => {
   selectedIndex.value = index;
@@ -381,10 +376,10 @@ onMounted(() => {
   if (codeRainCanvas.value && !reduceMotion) {
     stopCodeRain = startCodeRain(codeRainCanvas.value);
   }
+});
 
-  onUnmounted(() => {
-    stopCodeRain?.();
-  });
+onUnmounted(() => {
+  stopCodeRain?.();
 });
 </script>
 

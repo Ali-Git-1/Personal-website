@@ -85,7 +85,7 @@
               >
                 <path :d="link.icon" />
               </svg>
-              {{ lang === "fa" ? link.fa : link.en }}
+              {{ t("nav." + link.id) }}
             </a>
           </nav>
 
@@ -113,7 +113,9 @@
             <button
               type="button"
               class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-cyan-300 transition-colors hover:bg-white/5"
-              :aria-label="theme === 'dark' ? 'Light mode' : 'Dark mode'"
+              :aria-label="
+                theme === 'dark' ? t('header.lightMode') : t('header.darkMode')
+              "
               @click="theme = theme === 'dark' ? 'light' : 'dark'"
             >
               <svg
@@ -149,7 +151,7 @@
             <button
               type="button"
               class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-slate-300 lg:hidden"
-              aria-label="Menu"
+              :aria-label="t('header.menu')"
               @click="menuOpen = !menuOpen"
             >
               <svg
@@ -187,7 +189,7 @@
             ]"
             @click.prevent="goTo(link.id)"
           >
-            {{ lang === "fa" ? link.fa : link.en }}
+            {{ t("nav." + link.id) }}
           </a>
         </nav>
       </header>
@@ -233,19 +235,19 @@
               <span
                 class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"
               ></span>
-              پروژه‌های پرچمدار
+              {{ t("projects.badge") }}
             </div>
             <h2
               class="text-3xl font-extrabold text-white sm:text-4xl tracking-tight"
             >
-              نمونه‌کارهای
+              {{ t("projects.titleStart") }}
               <span
                 class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"
-                >منتخب</span
+                >{{ t("projects.titleAccent") }}</span
               >
             </h2>
             <p class="mt-4 text-slate-400 text-sm sm:text-base">
-              پروژه‌هایی که صفر تا صد پیاده‌سازی شده‌اند و روی وب زنده هستند.
+              {{ t("projects.subtitle") }}
             </p>
           </div>
 
@@ -270,21 +272,21 @@
                 }}</span>
               </div>
 
-              <div class="p-6 flex flex-col flex-grow text-right">
+              <div class="p-6 flex flex-col flex-grow text-start">
                 <h3
                   class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors duration-300"
                 >
-                  {{ project.title }}
+                  {{ pick(project, "title") }}
                 </h3>
                 <p
                   class="mt-3 text-slate-400 text-sm leading-relaxed flex-grow"
                 >
-                  {{ project.description }}
+                  {{ pick(project, "description") }}
                 </p>
 
                 <div class="mt-6 flex flex-wrap gap-1.5">
                   <span
-                    v-for="tech in project.techs"
+                    v-for="tech in pick(project, 'techs')"
                     :key="tech"
                     class="px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-950/80 text-emerald-300/80 border border-slate-800 group-hover:border-emerald-950 transition-colors"
                   >
@@ -302,7 +304,7 @@
                     rel="noopener noreferrer"
                     class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all duration-300 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-[1.02]"
                   >
-                    <span>مشاهده آنلاین</span>
+                    <span>{{ t("projects.demo") }}</span>
                     <span>↗</span>
                   </a>
 
@@ -313,8 +315,8 @@
                     rel="noopener noreferrer"
                     class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <span>GitHub</span>
-                    <span>←</span>
+                    <span>{{ t("projects.github") }}</span>
+                    <span>{{ lang === "fa" ? "←" : "→" }}</span>
                   </a>
                 </div>
               </div>
@@ -336,12 +338,23 @@ import FooterSection from "./components/FooterSection.vue";
 import PublishedAppsSection from "./components/PublishedAppsSection.vue";
 import PublishedGamesSection from "./components/PublishedGamesSection.vue";
 import WordPressProjectsSection from "./components/WordPressProjectsSection.vue";
+import { messages } from "./i18n/messages";
 
 const isLoading = ref(true);
 const progress = ref(0);
 const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
-const lang = useState("lang", () => "fa");
+const lang = useCookie("lang", {
+  default: () => "en",
+  maxAge: 60 * 60 * 24 * 365,
+});
+
 const theme = useState("theme", () => "dark");
+const t = (key) =>
+  key.split(".").reduce((o, k) => o?.[k], messages[lang.value]) ?? key;
+
+provide("lang", lang);
+provide("t", t);
+
 const menuOpen = ref(false);
 const activeId = ref("about");
 const navRef = ref(null);
@@ -412,6 +425,8 @@ const links = [
 let rafId;
 let locked = false;
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+const pick = (item, field) =>
+  lang.value === "en" && item.en?.[field] ? item.en[field] : item[field];
 
 const goTo = (id) => {
   menuOpen.value = false;
@@ -496,6 +511,12 @@ onMounted(() => {
 const projects = ref([
   {
     title: "فروشگاه آنلاین Monox",
+    en: {
+      title: "Monox Online Store",
+      description:
+        "An e-commerce site with smart categories, advanced product filters, a responsive UI, and cart management.",
+      techs: ["Vue.js", "Bootstrap", "JavaScript", "Responsive"],
+    },
     description:
       "وب‌سایت فروشگاهی با دسته‌بندی هوشمند، فیلتر پیشرفته محصولات، رابط کاربری ریسپانسیو و مدیریت سبد خرید.",
     icon: "🛍️",
@@ -505,6 +526,13 @@ const projects = ref([
   },
   {
     title: "وب‌سایت مقالات (Article Website)",
+    en: {
+      title: "Article Website",
+      description:
+        "A publishing and reading platform with clean design, structured categories, and an optimized user experience.",
+      techs: ["UI/UX", "CSS3", "JavaScript", "Vue.js"],
+    },
+
     description:
       "پلتفرم انتشار و مطالعه مقالات با طراحی تمیز، ساختار دسته‌بندی‌شده و بهینه‌سازی کامل برای تجربه کاربری.",
     icon: "📰",
@@ -514,6 +542,13 @@ const projects = ref([
   },
   {
     title: "وب‌سایت و پورتفولیوی شخصی",
+    en: {
+      title: "Personal Portfolio Website",
+      description:
+        "An interactive portfolio with smooth animations, clean sections, and a modern architecture.",
+      techs: ["JavaScript", "Vite", "Tailwind CSS", "Vue 3"],
+    },
+
     description:
       "پورتفولیوی تعاملی با انیمیشن‌های نرم، بخش‌بندی پروژه‌ها و مهارت‌ها با معماری مدرن و تمیز.",
     icon: "⚡",
@@ -611,8 +646,15 @@ onUnmounted(() => {
 
 <style>
 html {
-  direction: rtl;
   scroll-behavior: smooth;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
 }
 
 .fade-out-leave-active {
@@ -620,6 +662,7 @@ html {
     opacity 0.6s ease,
     transform 0.6s ease;
 }
+
 .fade-out-leave-to {
   opacity: 0;
   transform: scale(1.05);
