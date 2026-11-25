@@ -10,7 +10,7 @@
           <img
             v-if="!imageError"
             src="/me.jpg"
-            alt="تصویر پروفایل علی عربپور"
+            :alt="t('profile.imageAlt')"
             class="h-32 w-32 rounded-xl object-cover object-top sm:h-40 sm:w-40"
             @error="onImageError"
           />
@@ -27,18 +27,18 @@
               class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"
             ></span>
           </span>
-          آماده برای همکاری
+          {{ t("profile.status") }}
         </span>
       </div>
 
       <span
-        class="pointer-events-none absolute right-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400"
+        class="pointer-events-none absolute end-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-cyan-400"
       ></span>
 
       <div class="flex flex-col items-center text-center">
-        <h2 class="text-xl font-black text-white">علی عربپور</h2>
+        <h2 class="text-xl font-black text-white">{{ t("profile.name") }}</h2>
 
-        <p class="mt-1 text-sm text-emerald-300">توسعه‌دهنده وب</p>
+        <p class="mt-1 text-sm text-emerald-300">{{ t("profile.role") }}</p>
 
         <p
           class="mt-3 flex w-full flex-row items-center justify-center gap-2 text-sm text-slate-400"
@@ -46,42 +46,35 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <path :d="icons.pin" />
           </svg>
-          <span>شیراز، ایران</span>
+          <span> {{ t("profile.location") }}</span>
         </p>
         <p
           class="mt-3 flex w-full flex-row items-center justify-center gap-2 text-sm text-slate-400"
         >
-          تاریخ تولد : 21/12/1385
+          {{ t("profile.birth") }} :
+          <span dir="ltr">{{ t("profile.birthValue") }}</span>
         </p>
       </div>
 
       <ul
         class="mt-6 space-y-4 border-t border-white/10 pt-6 text-sm text-slate-300"
       >
-        <li class="flex flex-row items-center justify-center gap-2">
+        <li
+          v-for="item in education"
+          :key="item.key"
+          class="flex flex-row items-center justify-center gap-2"
+        >
           <svg class="icon text-emerald-300" viewBox="0 0 24 24">
-            <path :d="icons.palette" />
+            <path :d="item.icon" />
           </svg>
-          <span>دیپلم رشته گرافیک رایانه</span>
-        </li>
-
-        <li class="flex flex-row items-center justify-center gap-2">
-          <svg class="icon text-emerald-300" viewBox="0 0 24 24">
-            <path :d="icons.cap" />
-          </svg>
-          <span>کاردانی نرم‌افزار کامپیوتر</span>
-        </li>
-
-        <li class="flex flex-row items-center justify-center gap-2">
-          <svg class="icon text-emerald-300" viewBox="0 0 24 24">
-            <path :d="icons.shield" />
-          </svg>
-          <span>معافیت موقت سربازی</span>
+          <span>{{ t(item.key) }}</span>
         </li>
       </ul>
 
       <div class="mt-6 border-t border-white/10 pt-6">
-        <p class="mb-4 text-sm font-bold text-white">شرایط همکاری</p>
+        <p class="mb-4 text-sm font-bold text-white">
+          {{ t("profile.availabilityTitle") }}
+        </p>
 
         <div class="flex flex-wrap justify-center gap-2">
           <span
@@ -95,15 +88,17 @@
       </div>
 
       <div class="mt-6 border-t border-white/10 pt-6">
-        <p class="mb-4 text-sm font-bold text-white">راه‌های ارتباطی</p>
+        <p class="mb-4 text-sm font-bold text-white">
+          {{ t("profile.contactTitle") }}
+        </p>
 
         <ul class="flex flex-col items-center gap-2">
-          <li v-for="link in contacts" :key="link.label" class="w-full">
+          <li v-for="link in contacts" :key="link.labelKey" class="w-full">
             <a
               :href="link.href"
               :target="link.external ? '_blank' : undefined"
               :rel="link.external ? 'noopener noreferrer' : undefined"
-              :aria-label="link.label"
+              :aria-label="t(link.labelKey)"
               class="contact-link group flex w-full items-center justify-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-500/20 hover:bg-emerald-500/5 hover:text-emerald-300"
             >
               <svg
@@ -130,13 +125,21 @@
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path :d="icons.download" />
         </svg>
-        دانلود رزومه
+        {{ t("profile.resume") }}
       </a>
     </div>
   </aside>
 </template>
 
 <script setup>
+const t = inject("t");
+const lang = inject("lang");
+
+const education = computed(() => [
+  { icon: icons.palette, key: "profile.education.0" },
+  { icon: icons.cap, key: "profile.education.1" },
+  { icon: icons.shield, key: "profile.education.2" },
+]);
 const icons = {
   pin: "M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z",
 
@@ -161,31 +164,35 @@ const icons = {
   download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3",
 };
 
-const availability = ["تمام‌وقت", "پاره‌وقت", "ریموت"];
+const availability = computed(() => [
+  t("profile.availability.0"),
+  t("profile.availability.1"),
+  t("profile.availability.2"),
+]);
 
 const contacts = [
   {
-    label: "گیت‌هاب",
+    labelKey: "profile.labels.github",
     text: "github.com/Ali-Git-1",
     href: "https://github.com/Ali-Git-1",
     icon: "github",
     external: true,
   },
   {
-    label: "لینکدین",
+    labelKey: "profile.labels.linkedin",
     text: "ali-arabpour-b6b10343b",
     href: "https://www.linkedin.com/in/ali-arabpour-b6b10343b/",
     icon: "linkedin",
     external: true,
   },
   {
-    label: "تلفن",
+    labelKey: "profile.labels.phone",
     text: "09178975867",
     href: "tel:09178975867",
     icon: "phone",
   },
   {
-    label: "ایمیل",
+    labelKey: "profile.labels.email",
     text: "1qoo.ali.oop1@gmail.com",
     href: "mailto:1qoo.ali.oop1@gmail.com",
     icon: "mail",
