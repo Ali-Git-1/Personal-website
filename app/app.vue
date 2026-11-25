@@ -3,13 +3,20 @@
     <Transition name="fade-out">
       <div
         v-if="isLoading"
-        class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950 text-slate-100 font-mono select-none px-4"
+        class="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-950 text-slate-100 font-mono select-none px-4"
       >
         <div class="relative flex flex-col items-center">
           <div
             class="w-20 h-20 mb-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-3xl shadow-[0_0_50px_rgba(16,185,129,0.3)] animate-pulse"
           >
-            ⚡
+            <svg
+              class="h-8 w-8 text-emerald-400"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+            </svg>
           </div>
 
           <div
@@ -18,11 +25,11 @@
             <span
               class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"
             ></span>
-            در حال راه‌اندازی سیستم...
+            {{ t("loader.title") }}
           </div>
 
           <p class="text-slate-400 text-xs sm:text-sm h-6 text-center">
-            {{ currentStatus }}
+            {{ t(currentStatus) }}
           </p>
 
           <div
@@ -342,11 +349,9 @@ import { messages } from "./i18n/messages";
 
 const isLoading = ref(true);
 const progress = ref(0);
-const currentStatus = ref("درحال اتصال به ماژول های اصلی...");
-const lang = useCookie("lang", {
-  default: () => "en",
-  maxAge: 60 * 60 * 24 * 365,
-});
+const currentStatus = ref("loader.status.connecting");
+
+const lang = ref("en");
 
 const theme = useState("theme", () => "dark");
 const t = (key) =>
@@ -481,13 +486,10 @@ useHead({
 
 onMounted(() => {
   const steps = [
-    { threshold: 25, status: "بارگذاری پیکربندی و محیط..." },
-    {
-      threshold: 55,
-      status: "گردآوری دارایی‌ها و استایل‌دهی به کامپوننت‌ها...",
-    },
-    { threshold: 85, status: "راستی‌آزمایی داده‌های سبد سرمایه‌گذاری..." },
-    { threshold: 100, status: "سیستم آماده است. خوش آمدید!" },
+    { threshold: 25, status: "loader.status.config" },
+    { threshold: 55, status: "loader.status.assets" },
+    { threshold: 85, status: "loader.status.verify" },
+    { threshold: 100, status: "loader.status.ready" },
   ];
 
   const timer = setInterval(() => {

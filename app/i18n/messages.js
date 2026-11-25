@@ -48,6 +48,16 @@ export const messages = {
       progress: "پیشرفت مسیر",
       cta: { projects: "مشاهده نمونه‌کارها", contact: "ارتباط با من" },
     },
+    loader: {
+      title: "در حال راه‌اندازی سیستم...",
+      status: {
+        connecting: "درحال اتصال به ماژول های اصلی...",
+        config: "بارگذاری پیکربندی و محیط...",
+        assets: "گردآوری دارایی‌ها و استایل‌دهی به کامپوننت‌ها...",
+        verify: "راستی‌آزمایی داده‌های سبد سرمایه‌گذاری...",
+        ready: "سیستم آماده است. خوش آمدید!",
+      },
+    },
   },
   en: {
     nav: {
@@ -99,6 +109,16 @@ export const messages = {
       },
       progress: "Learning progress",
       cta: { projects: "View projects", contact: "Contact me" },
+    },
+    loader: {
+      title: "Booting system...",
+      status: {
+        connecting: "Connecting to core modules...",
+        config: "Loading configuration and environment...",
+        assets: "Bundling assets and styling components...",
+        verify: "Verifying data...",
+        ready: "System ready. Welcome!",
+      },
     },
   },
 };
