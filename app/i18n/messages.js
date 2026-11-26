@@ -66,7 +66,7 @@ export const messages = {
       location: "شیراز، ایران",
       education: ["دیپلم رشته گرافیک رایانه", "کاردانی نرمافزار کامپیوتر"],
       availabilityTitle: "شرایط همکاری",
-      availability: ["تماموقت", "پارهوقت", "ریموت"],
+      availability: ["تماموقت", "پاره وقت", "ریموت"],
       contactTitle: "راههای ارتباطی",
       labels: {
         github: "گیتهاب",
@@ -104,6 +104,17 @@ export const messages = {
           a: "به دنبال فرصتی هستم که بتوانم دانش و مهارت‌هایم در توسعه وب را در یک محیط حرفه‌ای به کار بگیرم، تجربه عملی بیشتری کسب کنم و در کنار یک تیم فنی رشد کنم. برای موقعیت‌های کارآموزی و Junior نیز آمادگی دارم و یادگیری، مسئولیت‌پذیری و پیشرفت تدریجی برایم اهمیت زیادی دارد.",
         },
       ],
+    },
+    skills: {
+      title: "مهارت‌های من",
+      subtitle:
+        "فناوری‌هایی که با آن‌ها کار می‌کنم، ابزارهایی که به کار می‌برم و مهارت‌هایی که در حال کسب آن‌ها هستم.",
+      groups: {
+        core: "مهارت‌های اصلی",
+        tools: "ابزارها و تجربه‌های مکمل",
+        learning: "در حال یادگیری",
+        software: "نرم‌افزارهای مورد استفاده",
+      },
     },
   },
   en: {
@@ -216,6 +227,17 @@ export const messages = {
           a: "I am looking for an opportunity to apply my web development knowledge in a professional environment, gain more hands-on experience, and grow alongside a technical team. I am also open to internship and Junior positions, and learning, responsibility, and steady progress matter a lot to me.",
         },
       ],
+    },
+    skills: {
+      title: "My skills",
+      subtitle:
+        "Technologies I work with, tools I use, and skills I'm building.",
+      groups: {
+        core: "Core skills",
+        tools: "Tools & complementary experience",
+        learning: "Currently learning",
+        software: "Software I use",
+      },
     },
   },
 };
