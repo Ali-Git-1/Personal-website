@@ -205,9 +205,7 @@
 
       <SkillsSection />
 
-      <PublishedAppsSection />
-
-      <PublishedGamesSection />
+      <AndroidSection />
 
       <WordPressProjectsSection />
 
@@ -391,19 +389,11 @@ const links = [
     icon: "M9 3v2 M15 3v2 M9 19v2 M15 19v2 M3 9h2 M3 15h2 M19 9h2 M19 15h2 M7 7h10v10H7z",
   },
   {
-    id: "published-apps",
-    fa: "برنامه‌ها",
-    en: "Apps",
-    active: "bg-emerald-400/15 text-emerald-300 ring-emerald-300/30",
-    icon: "M7 2h10v20H7z M11 18h2",
+    id: "android",
+    icon: "M8 3l1.5 2.5 M16 3l-1.5 2.5 M6 9a6 6 0 0 1 12 0v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9Z M9.5 13h.01 M14.5 13h.01",
+    active: "bg-emerald-400/10 text-emerald-300 ring-emerald-400/30",
   },
-  {
-    id: "published-games",
-    fa: "بازی‌ها",
-    en: "Games",
-    active: "bg-purple-400/15 text-purple-300 ring-purple-300/30",
-    icon: "M6 12h4 M8 10v4 M15 13h.01 M18 11h.01 M7 7h10a5 5 0 0 1 5 5v1a3 3 0 0 1-5.4 1.8L15 13H9l-1.6 1.8A3 3 0 0 1 2 13v-1a5 5 0 0 1 5-5Z",
-  },
+
   {
     id: "wordpress-projects",
     fa: "وردپرس",

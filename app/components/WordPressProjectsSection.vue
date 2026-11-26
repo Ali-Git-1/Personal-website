@@ -17,7 +17,6 @@
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- عنوان بخش -->
       <div class="text-center max-w-2xl mx-auto mb-16">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-4"
@@ -33,14 +32,12 @@
         </p>
       </div>
 
-      <!-- کارت‌های پروژه‌ها -->
       <div class="flex justify-center">
         <div
           v-for="site in sites"
           :key="site.id"
           class="w-full max-w-md group relative bg-slate-950/70 border border-slate-800 rounded-2xl p-6 hover:border-sky-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(14,165,233,0.15)] flex flex-col justify-between"
         >
-          <!-- بالا: لوگو و تگ وضعیت -->
           <div>
             <div class="flex items-start justify-between mb-5">
               <div
@@ -49,7 +46,6 @@
                 {{ site.icon }}
               </div>
 
-              <!-- وضعیت آنلاین یا در حال انتقال/تمدید -->
               <span
                 class="px-2.5 py-1 text-xs font-medium rounded-full border"
                 :class="
@@ -72,7 +68,6 @@
               {{ site.description }}
             </p>
 
-            <!-- تکنولوژی‌ها و افزونه‌ها -->
             <div class="mt-6 flex flex-wrap gap-2">
               <span
                 v-for="feature in site.features"
@@ -84,7 +79,6 @@
             </div>
           </div>
 
-          <!-- پایین: لینک یا وضعیت سرور -->
           <div
             class="mt-8 pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs"
           >
