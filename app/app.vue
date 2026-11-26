@@ -337,11 +337,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import AndroidSection from "./components/AndroidSection.vue";
 import SkillsSection from "./components/SkillsSection.vue";
 import HeroSection from "./components/HeroSection.vue";
 import FooterSection from "./components/FooterSection.vue";
-import PublishedAppsSection from "./components/PublishedAppsSection.vue";
-import PublishedGamesSection from "./components/PublishedGamesSection.vue";
 import WordPressProjectsSection from "./components/WordPressProjectsSection.vue";
 import { messages } from "./i18n/messages";
 
