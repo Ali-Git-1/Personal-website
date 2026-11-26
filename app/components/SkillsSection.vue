@@ -41,7 +41,7 @@
       </div>
       <div class="mt-12 flex flex-col gap-6 lg:flex-row">
         <div
-          class="flex gap-3 overflow-x-auto pb-2 lg:w-72 lg:shrink-0 lg:flex-col lg:overflow-visible lg:pb-0"
+          class="grid grid-cols-2 gap-3 lg:flex lg:w-72 lg:shrink-0 lg:flex-col"
           role="tablist"
         >
           <button
@@ -51,7 +51,7 @@
             role="tab"
             :aria-selected="activeTab === group.key"
             :class="[
-              'flex items-center justify-between gap-3 whitespace-nowrap lg:whitespace-normal rounded-xl border px-5 py-4 text-start font-bold transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
+              'flex items-center justify-between gap-3 whitespace-normal rounded-xl border px-5 py-4 text-start font-bold transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
               activeTab === group.key
                 ? 'border-emerald-500/60 bg-emerald-500/10 text-emerald-300'
                 : 'border-slate-800/80 bg-slate-900 text-slate-400 hover:border-emerald-500/30 hover:text-slate-200',
