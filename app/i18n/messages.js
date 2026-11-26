@@ -64,8 +64,6 @@ export const messages = {
       role: "توسعهدهنده وب",
       status: "آماده برای همکاری",
       location: "شیراز، ایران",
-      birth: "تاریخ تولد",
-      birthValue: "1385",
       education: ["دیپلم رشته گرافیک رایانه", "کاردانی نرمافزار کامپیوتر"],
       availabilityTitle: "شرایط همکاری",
       availability: ["تماموقت", "پارهوقت", "ریموت"],
@@ -146,8 +144,6 @@ export const messages = {
       role: "Web Developer",
       status: "Available for work",
       location: "Shiraz, Iran",
-      birth: "Date of birth",
-      birthValue: "1385",
       education: [
         "Diploma in Computer Graphics",
         "Associate in Computer Software",

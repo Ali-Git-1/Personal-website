@@ -48,12 +48,6 @@
           </svg>
           <span> {{ t("profile.location") }}</span>
         </p>
-        <p
-          class="mt-3 flex w-full flex-row items-center justify-center gap-2 text-sm text-slate-400"
-        >
-          {{ t("profile.birth") }} :
-          <span dir="ltr">{{ t("profile.birthValue") }}</span>
-        </p>
       </div>
 
       <ul
