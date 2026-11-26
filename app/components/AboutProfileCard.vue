@@ -138,7 +138,6 @@ const lang = inject("lang");
 const education = computed(() => [
   { icon: icons.palette, key: "profile.education.0" },
   { icon: icons.cap, key: "profile.education.1" },
-  { icon: icons.shield, key: "profile.education.2" },
 ]);
 const icons = {
   pin: "M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z",
