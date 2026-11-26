@@ -76,6 +76,35 @@ export const messages = {
       },
       resume: "دانلود رزومه",
     },
+    faq: {
+      title: "سؤالات متداول",
+      items: [
+        {
+          q: "شخصیت من در محیط کاری چگونه است؟",
+          a: "من فردی کنجکاو، مسئولیت‌پذیر و علاقه‌مند به یادگیری هستم. وقتی با موضوع یا ابزار جدیدی روبه‌رو می‌شوم، سعی می‌کنم فقط به یادگیری نحوه استفاده از آن اکتفا نکنم و منطق پشت آن را هم درک کنم. برایم مهم است که در یک محیط کاری، علاوه بر انجام وظایفم، بتوانم از تجربه دیگران یاد بگیرم و به پیشرفت تیم کمک کنم.",
+        },
+        {
+          q: "وقتی با یک مشکل فنی روبه‌رو می‌شوم، چه کار می‌کنم؟",
+          a: "معمولاً سعی می‌کنم قبل از هر اقدامی، مشکل را بررسی و به بخش‌های کوچک‌تر تقسیم کنم. به‌جای اینکه بدون درک علت، راه‌حل‌های مختلف را امتحان کنم، تلاش می‌کنم دلیل اصلی مشکل را پیدا کنم. از مستندات، آزمایش راه‌حل‌های مختلف و پرسیدن سؤال کمک می‌گیرم تا علاوه بر رفع مشکل، چیزی هم از آن یاد بگیرم.",
+        },
+        {
+          q: "چرا باید برای پروژه خود با من همکاری کنید؟",
+          a: "چون برای من توسعه وب فقط نوشتن کد و تحویل یک صفحه نیست. تلاش می‌کنم محصولی بسازم که ظاهر مناسب، عملکرد قابل قبول و ساختار قابل نگهداری داشته باشد. به جزئیات توجه می‌کنم، برای یادگیری ابزارهای جدید انگیزه دارم و ترجیح می‌دهم مسئولیت کاری را که می‌پذیرم، با دقت و پیگیری انجام دهم.",
+        },
+        {
+          q: "در یادگیری و پیشرفت حرفه‌ای چه رویکردی دارم؟",
+          a: "یادگیری برای من یک مسیر مداوم است. سعی می‌کنم مفاهیم جدید را با تمرین و پیاده‌سازی پروژه‌های واقعی بهتر درک کنم. در کنار یادگیری فناوری‌های جدید، به بازبینی پروژه‌های قبلی، رفع ایرادها و بهبود کیفیت کدها اهمیت می‌دهم؛ چون معتقدم پیشرفت واقعی فقط با اضافه کردن ابزارهای جدید به مهارت‌ها اتفاق نمی‌افتد.",
+        },
+        {
+          q: "آیا از کار تیمی و دریافت بازخورد استقبال می‌کنم؟",
+          a: "بله. معتقدم همکاری با افراد باتجربه‌تر می‌تواند فرصت خوبی برای یادگیری و رشد باشد. از دریافت بازخورد سازنده استقبال می‌کنم و اگر در روش انجام کاری اشتباه کرده باشم، ترجیح می‌دهم آن را بپذیرم و اصلاح کنم. همچنین برایم مهم است که ارتباط کاری شفاف و محترمانه‌ای با اعضای تیم داشته باشم.",
+        },
+        {
+          q: "در حال حاضر دنبال چه نوع فرصتی هستم؟",
+          a: "به دنبال فرصتی هستم که بتوانم دانش و مهارت‌هایم در توسعه وب را در یک محیط حرفه‌ای به کار بگیرم، تجربه عملی بیشتری کسب کنم و در کنار یک تیم فنی رشد کنم. برای موقعیت‌های کارآموزی و Junior نیز آمادگی دارم و یادگیری، مسئولیت‌پذیری و پیشرفت تدریجی برایم اهمیت زیادی دارد.",
+        },
+      ],
+    },
   },
   en: {
     nav: {
@@ -158,6 +187,35 @@ export const messages = {
         email: "Email",
       },
       resume: "Download resume",
+    },
+    faq: {
+      title: "Frequently asked questions",
+      items: [
+        {
+          q: "What is my personality like in a work environment?",
+          a: "I am curious, responsible, and eager to learn. When I face a new topic or tool, I try not only to learn how to use it but also to understand the logic behind it. In a workplace, besides doing my own tasks, it matters to me to learn from others' experience and help the team grow.",
+        },
+        {
+          q: "What do I do when I face a technical problem?",
+          a: "Before taking any action, I usually examine the problem and break it into smaller parts. Instead of trying different solutions without understanding the cause, I try to find the root cause. I rely on documentation, testing different solutions, and asking questions, so I learn something new while fixing the issue.",
+        },
+        {
+          q: "Why should you work with me on your project?",
+          a: "For me, web development is not just writing code and delivering a page. I try to build a product with a good look, solid performance, and a maintainable structure. I pay attention to details, I am motivated to learn new tools, and I prefer to carry out any responsibility I accept with care and follow-through.",
+        },
+        {
+          q: "What is my approach to learning and professional growth?",
+          a: "Learning is a continuous path for me. I try to understand new concepts better through practice and building real projects. Besides learning new technologies, I value revisiting past projects, fixing bugs, and improving code quality, because real progress does not come only from adding new tools to my skill list.",
+        },
+        {
+          q: "Do I welcome teamwork and feedback?",
+          a: "Yes. I believe working with more experienced people is a great chance to learn and grow. I welcome constructive feedback, and if I have made a mistake, I prefer to accept it and fix it. It is also important to me to keep clear and respectful communication with team members.",
+        },
+        {
+          q: "What kind of opportunity am I looking for right now?",
+          a: "I am looking for an opportunity to apply my web development knowledge in a professional environment, gain more hands-on experience, and grow alongside a technical team. I am also open to internship and Junior positions, and learning, responsibility, and steady progress matter a lot to me.",
+        },
+      ],
     },
   },
 };

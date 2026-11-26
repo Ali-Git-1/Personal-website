@@ -527,7 +527,7 @@ const projects = ref([
     demo: "https://ali-git-1.github.io/Monox/",
   },
   {
-    title: "وب‌سایت مقالات (Article Website)",
+    title: "وب‌سایت مقالات",
     en: {
       title: "Article Website",
       description:
