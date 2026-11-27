@@ -207,8 +207,6 @@
 
       <AndroidSection />
 
-      <WordPressProjectsSection />
-
       <section
         id="projects"
         class="relative py-28 overflow-hidden bg-slate-950"
@@ -341,7 +339,6 @@ import AndroidSection from "./components/AndroidSection.vue";
 import SkillsSection from "./components/SkillsSection.vue";
 import HeroSection from "./components/HeroSection.vue";
 import FooterSection from "./components/FooterSection.vue";
-import WordPressProjectsSection from "./components/WordPressProjectsSection.vue";
 import { messages } from "./i18n/messages";
 
 const isLoading = ref(true);
@@ -393,13 +390,6 @@ const links = [
     active: "bg-emerald-400/10 text-emerald-300 ring-emerald-400/30",
   },
 
-  {
-    id: "wordpress-projects",
-    fa: "وردپرس",
-    en: "WordPress",
-    active: "bg-sky-400/15 text-sky-300 ring-sky-300/30",
-    icon: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z M3 12h18 M12 3a14 14 0 0 1 0 18 M12 3a14 14 0 0 0 0 18",
-  },
   {
     id: "projects",
     fa: "نمونه‌کارها",
