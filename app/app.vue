@@ -1,53 +1,5 @@
 <template>
   <div>
-    <Transition name="fade-out">
-      <div
-        v-if="isLoading"
-        class="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-950 text-slate-100 font-mono select-none px-4"
-      >
-        <div class="relative flex flex-col items-center">
-          <div
-            class="w-20 h-20 mb-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-3xl shadow-[0_0_50px_rgba(16,185,129,0.3)] animate-pulse"
-          >
-            <svg
-              class="h-8 w-8 text-emerald-400"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
-            </svg>
-          </div>
-
-          <div
-            class="text-xs uppercase tracking-[0.3em] text-emerald-400 font-bold mb-2 flex items-center gap-2"
-          >
-            <span
-              class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"
-            ></span>
-            {{ t("loader.title") }}
-          </div>
-
-          <p class="text-slate-400 text-xs sm:text-sm h-6 text-center">
-            {{ t(currentStatus) }}
-          </p>
-
-          <div
-            class="w-64 sm:w-80 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-6 border border-slate-700/50"
-          >
-            <div
-              class="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-150 ease-out"
-              :style="{ width: `${progress}%` }"
-            ></div>
-          </div>
-
-          <div class="text-xs text-slate-500 mt-3 font-semibold">
-            [ {{ progress }}% ]
-          </div>
-        </div>
-      </div>
-    </Transition>
-
     <div
       class="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-900"
     >
@@ -341,9 +293,7 @@ import HeroSection from "./components/HeroSection.vue";
 import FooterSection from "./components/FooterSection.vue";
 import { messages } from "./i18n/messages";
 
-const isLoading = ref(true);
-const progress = ref(0);
-const currentStatus = ref("loader.status.connecting");
+const isLoading = ref(false);
 
 const lang = ref("en");
 
@@ -461,32 +411,6 @@ useHead({
     dir: computed(() => (lang.value === "fa" ? "rtl" : "ltr")),
     "data-theme": computed(() => theme.value),
   },
-});
-
-onMounted(() => {
-  const steps = [
-    { threshold: 25, status: "loader.status.config" },
-    { threshold: 55, status: "loader.status.assets" },
-    { threshold: 85, status: "loader.status.verify" },
-    { threshold: 100, status: "loader.status.ready" },
-  ];
-
-  const timer = setInterval(() => {
-    if (progress.value < 100) {
-      progress.value += Math.floor(Math.random() * 5) + 3;
-      if (progress.value > 100) progress.value = 100;
-
-      const step = steps.find((s) => progress.value <= s.threshold);
-      if (step) {
-        currentStatus.value = step.status;
-      }
-    } else {
-      clearInterval(timer);
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 800);
-    }
-  }, 100);
 });
 
 const projects = ref([
