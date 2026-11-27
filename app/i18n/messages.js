@@ -131,6 +131,20 @@ export const messages = {
       myket: "مایکت",
       empty: "موردی پیدا نشد",
     },
+    footer: {
+      description:
+        "توسعه‌دهنده فرانت‌اند با تمرکز بر رابط کاربری مدرن و پرفورمنس بالا. ساخت تجربیات دیجیتال با Nuxt و Tailwind.",
+      quickLinks: "دسترسی سریع",
+      contact: "ارتباط با من",
+      rights: "تمامی حقوق محفوظ است.",
+      builtWith: "طراحی و توسعه با Nuxt 3",
+      links: {
+        about: "درباره من",
+        skills: "مهارت‌ها",
+        projects: "نمونه‌کارها",
+        contact: "تماس با من",
+      },
+    },
   },
   en: {
     nav: {
@@ -268,6 +282,20 @@ export const messages = {
       download: "Download APK",
       myket: "Myket",
       empty: "Nothing found",
+    },
+    footer: {
+      description:
+        "Front-end developer focused on modern user interfaces and high performance. Building digital experiences with Nuxt and Tailwind.",
+      quickLinks: "Quick Links",
+      contact: "Contact Me",
+      rights: "All rights reserved.",
+      builtWith: "Designed and built with Nuxt 3",
+      links: {
+        about: "About",
+        skills: "Skills",
+        projects: "Projects",
+        contact: "Contact",
+      },
     },
   },
 };
