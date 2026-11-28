@@ -5,7 +5,7 @@ const t = inject("t");
 const lang = inject("lang");
 
 const open = ref(null);
-const count = 6;
+const count = 5;
 
 const toggle = (i) => {
   open.value = open.value === i ? null : i;

@@ -40,23 +40,14 @@ export const messages = {
       },
       intro: {
         greeting: "سلام، علی هستم؛",
-        role: "توسعه‌دهنده وب",
+        role: "توسعه‌دهنده وب و نرم‌افزار",
         paragraph:
-          "من به طراحی و توسعه وب‌سایت‌هایی علاقه دارم که در کنار ظاهر مدرن و جذاب، عملکرد مناسبی داشته باشند و تجربه کاربری خوبی ارائه دهند. تمرکز اصلی من روی توسعه رابط‌های کاربری با JavaScript، Vue.js و Nuxt است و تلاش می‌کنم با استفاده از ابزارهایی مانند Tailwind CSS، رابط‌هایی واکنش‌گرا، منظم و قابل نگهداری ایجاد کنم. در مسیر توسعه مهارت‌هایم، صرفاً به پیاده‌سازی ظاهر صفحات اکتفا نمی‌کنم؛ بلکه سعی دارم ساختار کدها، نحوه ارتباط بخش‌های مختلف برنامه و دلیل استفاده از هر ابزار را به‌خوبی درک کنم. یادگیری مستمر، حل مسئله و بهبود کیفیت پروژه‌ها از مهم‌ترین اولویت‌های من در مسیر حرفه‌ای برنامه‌نویسی هستند.",
+          "به طراحی و توسعه محصولات نرم‌افزاری مدرن، کاربردی و مقیاس‌پذیر علاقه‌مندم. تمرکز من بر ساخت تجربه‌های کاربری جذاب، توسعه رابط‌های کاربری پویا و پیاده‌سازی منطق سمت سرور است. در مسیر توسعه پروژه‌هایم از فناوری‌هایی مانند JavaScript، TypeScript، Vue.js، Nuxt.js، React و Next.js در بخش فرانت‌اند و Node.js، Express.js، NestJS و MongoDB در بخش بک‌اند استفاده می‌کنم. برای من برنامه‌نویسی تنها به نوشتن کد محدود نمی‌شود؛ بلکه درک معماری پروژه، انتخاب راهکارهای مناسب، بهینه‌سازی عملکرد و توجه به کیفیت و امنیت نرم‌افزار اهمیت زیادی دارد. همواره تلاش می‌کنم با یادگیری مستمر، تجربه عملی و حل مسائل واقعی، مهارت‌هایم را گسترش دهم و ایده‌ها را به محصولات نرم‌افزاری قابل اعتماد تبدیل کنم.",
       },
       progress: "پیشرفت مسیر",
       cta: { projects: "مشاهده نمونه‌کارها", contact: "ارتباط با من" },
     },
-    loader: {
-      title: "در حال راه‌اندازی سیستم...",
-      status: {
-        connecting: "درحال اتصال به ماژول های اصلی...",
-        config: "بارگذاری پیکربندی و محیط...",
-        assets: "گردآوری دارایی‌ها و استایل‌دهی به کامپوننت‌ها...",
-        verify: "راستی‌آزمایی داده‌های سبد سرمایه‌گذاری...",
-        ready: "سیستم آماده است. خوش آمدید!",
-      },
-    },
+
     profile: {
       imageAlt: "تصویر پروفایل علی عربپور",
       name: "علی عربپور",
@@ -97,10 +88,6 @@ export const messages = {
         {
           q: "آیا از کار تیمی و دریافت بازخورد استقبال می‌کنم؟",
           a: "بله. معتقدم همکاری با افراد باتجربه‌تر می‌تواند فرصت خوبی برای یادگیری و رشد باشد. از دریافت بازخورد سازنده استقبال می‌کنم و اگر در روش انجام کاری اشتباه کرده باشم، ترجیح می‌دهم آن را بپذیرم و اصلاح کنم. همچنین برایم مهم است که ارتباط کاری شفاف و محترمانه‌ای با اعضای تیم داشته باشم.",
-        },
-        {
-          q: "در حال حاضر دنبال چه نوع فرصتی هستم؟",
-          a: "به دنبال فرصتی هستم که بتوانم دانش و مهارت‌هایم در توسعه وب را در یک محیط حرفه‌ای به کار بگیرم، تجربه عملی بیشتری کسب کنم و در کنار یک تیم فنی رشد کنم. برای موقعیت‌های کارآموزی و Junior نیز آمادگی دارم و یادگیری، مسئولیت‌پذیری و پیشرفت تدریجی برایم اهمیت زیادی دارد.",
         },
       ],
     },
@@ -188,24 +175,15 @@ export const messages = {
         },
       },
       intro: {
-        greeting: "Hi, I'm Ali;",
-        role: "Web Developer",
+        greeting: "Hi, I'm Ali",
+        role: " — A Web & Software Developer",
         paragraph:
-          "I enjoy designing and building websites that combine a modern, attractive look with solid performance and a good user experience. My main focus is building user interfaces with JavaScript, Vue.js and Nuxt, and I use tools like Tailwind CSS to create responsive, organized and maintainable interfaces. As I develop my skills, I don't just implement page designs; I try to understand code structure, how different parts of an application connect, and why each tool is used. Continuous learning, problem solving and improving project quality are my top priorities on my professional programming path.",
+          "I'm passionate about designing and developing modern, practical, and scalable software products. My focus is on creating engaging user experiences, building dynamic user interfaces, and implementing server-side logic. Throughout my development journey, I work with technologies such as JavaScript, TypeScript, Vue.js, Nuxt.js, React, and Next.js on the frontend, as well as Node.js, Express.js, NestJS, and MongoDB on the backend. For me, programming goes beyond simply writing code. Understanding software architecture, choosing the right solutions, optimizing performance, and maintaining software quality and security are equally important. I continuously strive to expand my skills through ongoing learning, hands-on experience, and solving real-world problems, turning ideas into reliable software products.",
       },
       progress: "Learning progress",
       cta: { projects: "View projects", contact: "Contact me" },
     },
-    loader: {
-      title: "Booting system...",
-      status: {
-        connecting: "Connecting to core modules...",
-        config: "Loading configuration and environment...",
-        assets: "Bundling assets and styling components...",
-        verify: "Verifying data...",
-        ready: "System ready. Welcome!",
-      },
-    },
+
     profile: {
       imageAlt: "Ali Arabpour profile photo",
       name: "Ali Arabpour",
@@ -249,10 +227,6 @@ export const messages = {
         {
           q: "Do I welcome teamwork and feedback?",
           a: "Yes. I believe working with more experienced people is a great chance to learn and grow. I welcome constructive feedback, and if I have made a mistake, I prefer to accept it and fix it. It is also important to me to keep clear and respectful communication with team members.",
-        },
-        {
-          q: "What kind of opportunity am I looking for right now?",
-          a: "I am looking for an opportunity to apply my web development knowledge in a professional environment, gain more hands-on experience, and grow alongside a technical team. I am also open to internship and Junior positions, and learning, responsibility, and steady progress matter a lot to me.",
         },
       ],
     },
